@@ -1,5 +1,12 @@
-# advent-of-code
+# Advent of Code
 Advent of Code solutions, by [Richard Fu](https://github.com/furic/)
+
+# Running from Terminal
+To run TypeScripts in terminal, easiest way is using `ts-node`:
+```
+> npm install -g ts-node
+> ts-node --logError <filename>.ts
+```
 
 ## December 2023
 | S | M | T | W | T | F | S |
@@ -10,3 +17,4 @@ Advent of Code solutions, by [Richard Fu](https://github.com/furic/)
 | 17 | 18 | 19 | 20 | 21 | 22 | 23 |
 | 24 | 25 | 26 | 27 | 28 | 29 | 30 |
 | 31 |   |   |   |   |   |   |
+
