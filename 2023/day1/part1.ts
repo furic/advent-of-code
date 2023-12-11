@@ -1,21 +1,12 @@
 const fs = require("fs");
+const input = fs.readFileSync("input", "utf8").split("\n");
 
-fs.readFile("input.txt", (err, data) => {
-    if (err) throw err;
-    processFile(data.toString())
-});
+let sum = 0;
 
-function processFile(input) {
-
-    let lines = input.split('\n');
-
-    let sum = 0;
-
-    lines.map((line) => {
-    line = line.replace(/[^0-9]/g, '');
-    line = line[0] + line[line.length - 1];
-    sum += Number(line);
-    });
-
-    console.log(sum);
+for (const line of input) {
+    let numbers = line.replace(/[^0-9]/g, '');
+    numbers = numbers[0] + numbers[numbers.length - 1];
+    sum += Number(numbers);
 }
+
+console.log(sum);

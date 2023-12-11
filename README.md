@@ -1,5 +1,5 @@
 # Advent of Code
-Advent of Code solutions, by [Richard Fu](https://github.com/furic/)
+Advent of Code solutions, by [Richard Fu](https://github.com/furic/).
 
 ## Running from Terminal
 To run TypeScripts in terminal, easiest way is using `ts-node`:
