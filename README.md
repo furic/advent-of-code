@@ -1,5 +1,5 @@
 # Advent of Code
-Advent of Code solutions, by [Richard Fu](https://github.com/furic/).
+[Advent of Code](https://adventofcode.com) solutions, by [Richard Fu](https://github.com/furic/).
 
 ## Running from Terminal
 To run TypeScripts in terminal, easiest way is using `ts-node`:
@@ -8,7 +8,7 @@ To run TypeScripts in terminal, easiest way is using `ts-node`:
 > ts-node --logError <filename>.ts
 ```
 
-## 2023
+## [2023](./2023)
 | S | M | T | W | T | F | S |
 |---|---|---|---|---|---|---|
 |   |   |   |   |   | [1](./2023/01) | [2](./2023/02) |
