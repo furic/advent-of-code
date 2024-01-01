@@ -1,11 +1,8 @@
 const fs = require("fs");
 const input = fs.readFileSync("input", "utf8").split("\n");
 
-let result = 0;
-
 const seeds = input[0].split(": ")[1].split(" ").map(x => Number(x));
-const maps = input.slice(2).map(y => y.split(" ").map(z => Number(z)));
-
+const maps = input.slice(2).map(x => x.split(" ").map(y => Number(y)));
 const results = [];
 
 function translate(index, value) {
@@ -14,10 +11,10 @@ function translate(index, value) {
     const [destination, source, range] = maps[index];
 
     if (source <= value && value < source + range) {
-        let newIndex = index + 1;
-        for (; newIndex < maps.length && maps[newIndex].length === 3 ; newIndex++);
+        let nextIndex = index + 1;
+        for (; nextIndex < maps.length && maps[nextIndex].length === 3 ; nextIndex++);
         // console.log(value + ' translated to ' + (destination + value - source), destination, source, range, index, newIndex);
-        return translate(newIndex, destination + value - source);
+        return translate(nextIndex, destination + value - source);
     }
 
     return translate(index + 1, value);
