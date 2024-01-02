@@ -11,10 +11,10 @@ function translate(index, value) {
     const [destination, source, range] = maps[index];
 
     if (source <= value && value < source + range) {
-        let nextIndex = index + 1;
-        for (; nextIndex < maps.length && maps[nextIndex].length === 3 ; nextIndex++);
+        let nextMapIndex = index + 1;
+        for (; nextMapIndex < maps.length && maps[nextMapIndex].length === 3 ; nextMapIndex++);
         // console.log(value + ' translated to ' + (destination + value - source), destination, source, range, index, newIndex);
-        return translate(nextIndex, destination + value - source);
+        return translate(nextMapIndex, destination + value - source);
     }
 
     return translate(index + 1, value);
