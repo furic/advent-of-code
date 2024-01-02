@@ -13,7 +13,7 @@ function translate(index, value) {
     if (source <= value && value < source + range) {
         let nextMapIndex = index + 1;
         for (; nextMapIndex < maps.length && maps[nextMapIndex].length === 3 ; nextMapIndex++);
-        // console.log(value + ' translated to ' + (destination + value - source), destination, source, range, index, newIndex);
+        // console.log(value + ' mapped to ' + (destination + value - source), destination, source, range, index, newIndex);
         return translate(nextMapIndex, destination + value - source);
     }
 

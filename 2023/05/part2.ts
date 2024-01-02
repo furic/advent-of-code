@@ -5,7 +5,6 @@ const seeds = input[0].split(": ")[1].split(" ").map(x => Number(x)).reduce((a, 
     if (i % 2 == 0) a.push([]);
     return a[a.length - 1].push(x), a;
 }, []);
-console.log(seeds);
 const maps = input.slice(2).map(x => x.split(" ").map(y => Number(y)));
 const results = [];
 
