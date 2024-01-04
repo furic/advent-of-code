@@ -1,5 +1,5 @@
 # Advent of Code 2023
-[Advent of Code 2023](https://adventocode.com/2023) solutions, by [Richard Fu](https://github.com/furic/), credit to and inspired by [hiimjustin000's solution](htpps://github.com/hiimjustin000/advent-of-code).
+[Advent of Code 2023](https://adventocode.com/2023) solutions, by [Richard Fu](https://github.com/furic/). Credit to and inspired by [hiimjustin000's solution](https://github.com/hiimjustin000/advent-of-code).
 
 ## Running from Terminal
 To run TypeScripts in terminal, easiest way is using `ts-node`:
