@@ -77,8 +77,6 @@ Adding all of the possible arrangement counts together produces a total of `_21_
 
 For each row, count all of the different arrangements of operational and broken springs that meet the given criteria. _What is the sum of those counts?_
 
-Your puzzle answer was `7732`.
-
 \--- Part Two ---
 -----------------
 
