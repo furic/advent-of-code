@@ -37,8 +37,6 @@ So, in this example, the Elf's pile of scratchcards is worth `_13_` points.
 
 Take a seat in the large pile of colorful cards. _How many points are they worth in total?_
 
-Your puzzle answer was `23673`.
-
 \--- Part Two ---
 -----------------
 

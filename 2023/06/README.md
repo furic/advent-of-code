@@ -46,8 +46,6 @@ To see how much margin of error you have, determine the _number of ways you can 
 
 Determine the number of ways you could beat the record in each race. _What do you get if you multiply these numbers together?_
 
-Your puzzle answer was `170000`.
-
 \--- Part Two ---
 -----------------
 

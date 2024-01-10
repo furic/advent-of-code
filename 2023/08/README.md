@@ -35,8 +35,6 @@ Of course, you might not find `ZZZ` right away. If you run out of left/right ins
 
 Starting at `AAA`, follow the left/right instructions. _How many steps are required to reach `ZZZ`?_
 
-Your puzzle answer was `21883`.
-
 \--- Part Two ---
 -----------------
 
