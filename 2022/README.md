@@ -1,5 +1,5 @@
 # Advent of Code 2022
-[Advent of Code 2022](https://adventocode.com/2022) solutions, by [Richard Fu](https://github.com/furic/).
+[Advent of Code 2022](https://adventocode.com/2022) solutions, by [Richard Fu](https://github.com/furic/). Credit to and inspired by [thomasync's solution](https://github.com/thomasync/adventofcode-puzzles/).
 
 ## Code Run
 To run TypeScripts in terminal, easiest way is using `ts-node`:
