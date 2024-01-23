@@ -5,10 +5,8 @@ let result = 0;
 
 for (const sections of input) {
     if (sections[0][0] <= sections[1][1] && sections[0][1] >= sections[1][0]) {
-        console.log(sections);
         result++;
     } else if (sections[1][0] <= sections[0][1] && sections[1][1] >= sections[0][0]) {
-        console.log(sections);
         result++;
     }
 }
