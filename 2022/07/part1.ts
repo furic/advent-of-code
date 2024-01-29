@@ -24,7 +24,7 @@ for (const line of input) {
         path.forEach((dir, i) => {
             var key = path.slice(0, i).join("/") + "/" + dir;
             dirs[key] ??= 0;
-            dirs[key] += +size;
+            dirs[key] += Number(size);
         });
         continue;
     }
