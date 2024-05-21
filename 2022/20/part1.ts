@@ -1,5 +1,5 @@
 const fs = require("fs");
-const input = fs.readFileSync("input", "utf8").split('\n').map(x => ({ value: Number(x) }));
+const input = fs.readFileSync("input", "utf8").split('\n').map((x: string) => ({ value: +x }));
 
 const numbers = [...input];
 for (const move of input) {

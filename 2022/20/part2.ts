@@ -1,5 +1,5 @@
 const fs = require("fs");
-const input = fs.readFileSync("input", "utf8").split('\n').map(x => ({ value: Number(x * 811589153) }));
+const input = fs.readFileSync("input", "utf8").split('\n').map((x: string) => ({ value: +x * 811589153 }));
 
 const numbers = [...input];
 

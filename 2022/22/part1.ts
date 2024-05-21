@@ -1,7 +1,14 @@
 const fs = require("fs");
 const input = fs.readFileSync("input", "utf8");
 
-const walk = (pos, steps) => {
+const DIRECTION_MAP = [
+  { x: 1, y: 0 },
+  { x: 0, y: 1 },
+  { x: -1, y: 0 },
+  { x: 0, y: -1 }
+];
+
+const walk = (pos: { x: number, y: number, direction: number }, steps: number) => {
   for (; steps > 0; steps--) {
     const heading = DIRECTION_MAP[pos.direction];
     let next = { ...pos };
@@ -18,7 +25,7 @@ const walk = (pos, steps) => {
   return pos;
 }
 
-const wrap = (pos) => {
+const wrap = (pos: { x: number, y: number, direction: number }) => {
   const heading = DIRECTION_MAP[pos.direction];
   const opposite = { x: heading.x * -1, y: heading.y * -1 };
   const wrap = { ...pos };
@@ -31,13 +38,6 @@ const wrap = (pos) => {
   }
   return wrap;
 };
-
-const DIRECTION_MAP = [
-  { x: 1, y: 0 },
-  { x: 0, y: 1 },
-  { x: -1, y: 0 },
-  { x: 0, y: -1 }
-];
 
 let [maze, directions] = input.split('\n\n');
 let pos = { x: 0, y: 0, direction: 0 };

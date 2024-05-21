@@ -1,19 +1,20 @@
 const fs = require("fs");
 const input = fs.readFileSync("input", "utf8").split('\n')
-  .map(line => {
+  .map((line: string) => {
     if (line.match(/^([a-z]+): (\d+)$/)) {
-      const [, variable, number] = line.match(/^([a-z]+): (\d+)$/);
-      return { variable, number: Number(number) };
+      const [, variable, number] = line.match(/^([a-z]+): (\d+)$/)!;
+      return { variable, number: +number };
     } else if (line.match(/^([a-z]+): ([a-z]+) (.) ([a-z]+)$/)) {
       const [, variable, param1, operator, param2] = line.match(
         /^([a-z]+): ([a-z]+) (.) ([a-z]+)$/,
-      );
+      )!;
       return { variable, param1, operator, param2 };
     }
   })
-  .reduce((obj, x) => ({ ...obj, [x.variable]: x }), {});
+  .reduce((obj: { variable: string, param1: string, operator: string, param2: string }, x: { variable: string, param1: string, operator: string, param2: string }) =>
+    ({ ...obj, [x.variable]: x }), {});
 
-const calc = (name) => {
+const calc = (name: string): number => {
   const line = input[name];
   if (line.number !== undefined) {
     return line.number;
@@ -30,9 +31,10 @@ const calc = (name) => {
     case '*':
       return val1 * val2;
   }
+  return 0;
 };
 
-const calc2 = (name, result) => {
+const calc2 = (name: string, result: number): number => {
   if (name === 'humn') {
     return result;
   }
@@ -56,7 +58,7 @@ const calc2 = (name, result) => {
         return calc2(line.param1, result * val2);
     }
   }
-  
+
   if (Number.isNaN(val2)) {
     if (name === 'root') {
       return calc2(line.param2, val1);
@@ -72,9 +74,11 @@ const calc2 = (name, result) => {
         return calc2(line.param2, val1 / result);
     }
   }
+
+  return 0;
 };
 
 input.humn.number = NaN;
-const result = calc2('root');
+const result = calc2('root', 0);
 
 console.log(result);

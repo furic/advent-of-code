@@ -1,22 +1,23 @@
 const fs = require("fs");
 const input = fs.readFileSync("input", "utf8").split('\n');
 
-const indexMap = { ore: 0, clay: 1, obsidian: 2, geode: 3 };
-const blueprints = input.map(line => {
+const RESOURCE_MAP = { ore: 0, clay: 1, obsidian: 2, geode: 3 };
+type ElementType = keyof typeof RESOURCE_MAP;
+
+const blueprints = input.map((line: string) => {
   let [, plans] = line.split(': ');
-  plans = plans.split('. ').map(line => {
-    const [, cost] = line.match(/^Each [^\s]+ robot costs ([^.]*)\.?$/);
+  return plans.split('. ').map((line: string) => {
+    const [, cost] = line.match(/^Each [^\s]+ robot costs ([^.]*)\.?$/)!;
     const requirements = [0, 0, 0, 0];
     cost.split(' and ').forEach(s => {
-      const [resourceCount, resourceType] = s.split(' ');
-      requirements[indexMap[resourceType]] = +resourceCount;
+      const [resourceCount, resourceType] = s.split(' ') as [string, ElementType];
+      requirements[RESOURCE_MAP[resourceType]] = +resourceCount;
     });
     return requirements;
   });
-  return plans;
-});
+}) as number[][][];
 
-const best = (blueprint, timeAvailable: number) => {
+const best = (blueprint: number[][], timeAvailable: number) => {
   const queue = [
     {
       resources: [0, 0, 0, 0],
@@ -34,7 +35,7 @@ const best = (blueprint, timeAvailable: number) => {
   ];
   while (queue.length > 0) {
     const next = queue.pop();
-    let { resources, robots, time } = next;
+    let { resources, robots, time } = next!;
     max = Math.max(max, resources[3] + robots[3] * time);
 
     blueprint.forEach((requirements, robotType) => {
