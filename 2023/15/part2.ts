@@ -1,4 +1,4 @@
-const fs = require("fs");
+import * as fs from 'fs';
 const input = fs.readFileSync("input", "utf8").split(",").map(x => x.split(/=|-/)).map(x => [x[0], Number(x[1])]);
 
 const lenses = {};

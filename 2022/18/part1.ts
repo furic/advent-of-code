@@ -1,4 +1,4 @@
-const fs = require("fs");
+import * as fs from 'fs';
 const input = fs.readFileSync("input", "utf8").split('\n').map((line: string) => {
   const [x, y, z] = line.split(',').map(n => +n);
   return { x, y, z };

@@ -1,4 +1,4 @@
-const fs = require("fs");
+import * as fs from 'fs';
 const input = fs.readFileSync("input", "utf8").split("\n");
 
 const seeds = input[0].split(": ")[1].split(" ").map(x => Number(x)).reduce((a, x, i) => {

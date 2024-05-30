@@ -1,4 +1,4 @@
-const fs = require("fs");
+import * as fs from 'fs';
 const input = fs.readFileSync("input", "utf8").split("\n");
 
 const moves = input[0].replace(/L/g, "0").replace(/R/g, "1").split("");

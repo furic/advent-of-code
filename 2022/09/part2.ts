@@ -1,4 +1,4 @@
-const fs = require("fs");
+import * as fs from 'fs';
 const input = fs.readFileSync("input", "utf8").split("\n").map(x => x.split(" ").map((y, i) => y = i === 1 ? Number(y) : y));
 
 const knots = new Array(10).fill().map(() => ({ x: 0, y: 0 }));

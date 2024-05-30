@@ -1,4 +1,4 @@
-const fs = require("fs");
+import * as fs from 'fs';
 const input = fs.readFileSync("input", "utf8").split("\n").filter(x => x).map(x => JSON.parse(x));
 
 const divider = [[[2]], [[6]]];

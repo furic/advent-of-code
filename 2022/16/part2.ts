@@ -1,7 +1,11 @@
-const fs = require("fs");
+import * as fs from 'fs';
+
+type Valve = { id: string, rate: number, destinations: string[], paths: Path[] };
+type Path = { id: string, distance: number };
+
 const input = fs.readFileSync("input", "utf8").split("\n");
 
-const getDistance = (valves, from, to) => {
+const getDistance = (valves: Record<string, Valve>, from: string, to: string) => {
   const queue = [{ id: from, steps: 0 }];
   const visited = new Set(`${from},0`);
   while (queue.length > 0) {
@@ -17,11 +21,11 @@ const getDistance = (valves, from, to) => {
   }
 };
 
-const valves = input.map(line => {
+const valves: Record<string, Valve> = input.map(line => {
   const [, id, rate, destinations] = line.match(
     /^Valve ([^\s]+) has flow rate=(\d+); tunnels? leads? to valves? (.+)$/,
   );
-  return { id, rate: Number(rate), destinations: destinations.split(', ') };
+  return { id, rate: +rate, destinations: destinations.split(', ') };
 }).reduce((obj, valve) => ({ ...obj, [valve.id]: valve }), {});
 
 Object.values(valves).forEach(valve => {
@@ -49,7 +53,7 @@ for (let i = 0; i < possiblePaths.length; i++) {
   }
 }
 
-const findBest = (valves, current, open, time) => {
+const findBest = (valves: Record<string, Valve>, current: string, open: Set<string>, time: number) => {
   if (time === 0) {
     return 0;
   }
