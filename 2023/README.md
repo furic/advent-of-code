@@ -4,7 +4,15 @@
 ## Code Run
 To run TypeScripts in terminal, easiest way is using `ts-node`:
 ```
-> npm install -g ts-node
+> npm i -g ts-node
+```
+The repo uses `@types/node` type definitions for node:
+```
+> npm i
+> ts-node <filename>.ts
+```
+Otherwise, you can also skip `npm i` by ignoring the type errors:
+```
 > ts-node --logError <filename>.ts
 ```
 
