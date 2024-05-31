@@ -1,7 +1,8 @@
 import * as fs from 'fs';
-const input = fs.readFileSync("input", "utf8").split("\n");
 
-function getNumber(indices: number[]) {
+const input = fs.readFileSync("example", "utf8").split("\n");
+
+const getNumber = (indices: [number, number]) => {
     const i = indices[0];
     const j = indices[1];
     let number = '' + input[i][j];
@@ -13,13 +14,14 @@ function getNumber(indices: number[]) {
     while (jPlus < input[0].length - 1 && /\d/.test(input[i][++jPlus])) {
         number = number + input[i][jPlus];
     }
-    return Number(number);
+    return +number;
 }
 
 let result = 0;
 
 for (let i = 0; i < input.length; i++) {
-    for (const match of input[i].matchAll(/\*/g)) {
+    const matches = Array.from(input[i].matchAll(/\*/g));
+    for (const match of matches) {
         const j = match.index;
         const surrounding = [
             (input[i - 1] ?? "")[j - 1] ?? ".",
@@ -49,7 +51,7 @@ for (let i = 0; i < input.length; i++) {
                 localNumberIndices.push(indices[k]);
             }
         }
-        if (localNumberIndices.length == 2) {
+        if (localNumberIndices.length === 2) {
             let number1 = getNumber(localNumberIndices[0]);
             let number2 = getNumber(localNumberIndices[1]);
             result += number1 * number2;
