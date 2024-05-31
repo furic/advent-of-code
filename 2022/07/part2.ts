@@ -1,8 +1,9 @@
 import * as fs from 'fs';
+
 const input = fs.readFileSync("input", "utf8").split("\n");
 
 let path: string[] = [];
-const dirs = {};
+const dirs: Record<string, number> = {};
 
 for (const line of input) {
     let _a, _b;

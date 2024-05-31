@@ -1,4 +1,5 @@
 import * as fs from 'fs';
+
 const input = fs.readFileSync("input", "utf8");
 
 type Point = { x: number, y: number };

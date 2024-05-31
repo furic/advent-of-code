@@ -1,4 +1,5 @@
 import * as fs from 'fs';
+
 const input = fs.readFileSync("input", "utf8").split("\n").map((x) => x.split(",").map((y) => y.split("-").map((z) => Number(z))));
 
 let result = 0;

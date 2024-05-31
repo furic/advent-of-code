@@ -1,4 +1,5 @@
 import * as fs from 'fs';
+
 const input = fs.readFileSync("input", "utf8").split('\n');
 
 const RESOURCE_MAP = { ore: 0, clay: 1, obsidian: 2, geode: 3 };

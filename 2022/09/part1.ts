@@ -1,12 +1,13 @@
 import * as fs from 'fs';
-const input = fs.readFileSync("input", "utf8").split("\n").map(x => x.split(" ").map((y, i) => y = i === 1 ? Number(y) : y));
+
+const input = fs.readFileSync("input", "utf8").split("\n").map(x => x.split(" ").map((y: string | number, i) => y = i === 1 ? +y : y));
 
 const head = { x: 0, y: 0 };
 const tail = { x: 0, y: 0 };
 const visited = new Set([`0,0`]);
 
 for (const [direction, count] of input) {
-    for (let i = 0; i < count; i++) {
+    for (let i = 0; i < (count as number); i++) {
         if (direction === 'R') head.x++;
         if (direction === 'L') head.x--;
         if (direction === 'D') head.y++;

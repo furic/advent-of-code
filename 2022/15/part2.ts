@@ -1,4 +1,5 @@
 import * as fs from 'fs';
+
 const input = fs.readFileSync("input", "utf8").split("\n");
 
 const size = 4000000;

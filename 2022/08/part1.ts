@@ -1,5 +1,6 @@
 import * as fs from 'fs';
-const input = fs.readFileSync("input", "utf8").split("\n").map(x => x.split("").map(y => ({ height: Number(y) })));
+
+const input = fs.readFileSync("input", "utf8").split("\n").map(x => x.split("").map(y => ({ height: +y, visible: false })));
 
 const calcVisibility = (tree, max) => {
     if (tree.height > max) {

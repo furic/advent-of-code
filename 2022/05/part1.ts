@@ -1,4 +1,5 @@
 import * as fs from 'fs';
+
 const input = fs.readFileSync("input", "utf8").split("\n\n");
 
 const rawStacks = input[0].split("\n").map((line) => line.split(""));

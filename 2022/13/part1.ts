@@ -1,4 +1,5 @@
 import * as fs from 'fs';
+
 const input = fs.readFileSync("input", "utf8").split("\n\n").map(x => x.split("\n").map(y => JSON.parse(y)));
 
 const check = (a, b) => {
@@ -20,7 +21,7 @@ const check = (a, b) => {
     return a.length - b.length;
 };
 
-const result = input.map((pair, i) => (check(...pair) < 0 ? i + 1 : 0))
+const result = input.map((pair, i) => (check(pair[0], pair[1]) < 0 ? i + 1 : 0))
     .reduce((a, b) => a + b);
 
 console.log(result);

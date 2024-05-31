@@ -1,16 +1,15 @@
 import * as fs from 'fs';
+
 const input = fs.readFileSync("input", "utf8").split('\n').map((line: string) => {
   const [x, y, z] = line.split(',').map(n => +n);
   return { x, y, z };
 });
 
-type Point = { x: number, y: number, z: number };
+const getKey = (p) => `${p.x},${p.y},${p.z}`;
 
-const getKey = (p: Point) => `${p.x},${p.y},${p.z}`;
+const checkExists = (point) => set.has(getKey(point));
 
-const checkExists = (point: Point) => set.has(getKey(point));
-
-const getNeighbors = ({ x, y, z }: Point): Point[] => [
+const getNeighbors = ({ x, y, z }) => [
   { x: x - 1, y, z },
   { x: x + 1, y, z },
   { x, y: y - 1, z },
@@ -19,7 +18,7 @@ const getNeighbors = ({ x, y, z }: Point): Point[] => [
   { x, y, z: z + 1 },
 ];
 
-const isExterior = (point: Point, cache: Set<string>) => {
+const isExterior = (point, cache: Set<string>) => {
   const visited = new Set(getKey(point));
   const queue = [point];
 
@@ -40,14 +39,14 @@ const isExterior = (point: Point, cache: Set<string>) => {
   return false;
 }
 
-const minX = Math.min(...input.map((p: Point) => p.x));
-const maxX = Math.max(...input.map((p: Point) => p.x));
-const minY = Math.min(...input.map((p: Point) => p.y));
-const maxY = Math.max(...input.map((p: Point) => p.y));
-const minZ = Math.min(...input.map((p: Point) => p.z));
-const maxZ = Math.max(...input.map((p: Point) => p.z));
+const minX = Math.min(...input.map((p) => p.x));
+const maxX = Math.max(...input.map((p) => p.x));
+const minY = Math.min(...input.map((p) => p.y));
+const maxY = Math.max(...input.map((p) => p.y));
+const minZ = Math.min(...input.map((p) => p.z));
+const maxZ = Math.max(...input.map((p) => p.z));
 
-const isWithinLimits = ({ x, y, z }: Point) =>
+const isWithinLimits = ({ x, y, z }) =>
   minX <= x && maxX >= x && minY <= y && maxY >= y && minZ <= z && maxZ >= z;
 
 const set = new Set(input.map(getKey));

@@ -1,4 +1,5 @@
 import * as fs from 'fs';
+
 const input = fs.readFileSync("input", "utf8");
 
 const monkeys = input.split("\n\n").map(monkey => {
@@ -6,7 +7,7 @@ const monkeys = input.split("\n\n").map(monkey => {
     const [, items] = lines[1].split(": ");
     const [safe] = lines[2].match(/(old|\d+) (\*|\+) (old|\d+)$/);
     return {
-        items: items.split(", ").map(x => Number(x)),
+        items: items.split(", ").map(x => +x),
         operation: new Function("old", `return ${safe}`),
         divisible: Number(lines[3].match(/\d+$/)[0]),
         yes: Number(lines[4].match(/\d+$/)[0]),

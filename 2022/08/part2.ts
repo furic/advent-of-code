@@ -1,5 +1,6 @@
 import * as fs from 'fs';
-const input = fs.readFileSync("input", "utf8").split("\n").map(x => x.split("").map(y => ({ height: Number(y) })));
+
+const input = fs.readFileSync("input", "utf8").split("\n").map(x => x.split("").map(y => ({ height: +y })));
 
 let result = 0;
 
@@ -34,7 +35,7 @@ for (let i = 0; i < input.length; i++) {
             if (input[i][xj].height >= input[i][j].height) break;
         }
         scoreSum *= score;
-        
+
         result = Math.max(scoreSum, result);
     }
 }

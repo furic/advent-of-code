@@ -1,8 +1,9 @@
 import * as fs from 'fs';
+
 const input = fs.readFileSync("input", "utf8").split("\n");
 
 let path: string[] = [];
-const dirs = {};
+const dirs: Record<string, number> = {};
 
 for (const line of input) {
     let _a, _b;
@@ -24,7 +25,7 @@ for (const line of input) {
         path.forEach((dir, i) => {
             var key = path.slice(0, i).join("/") + "/" + dir;
             dirs[key] ??= 0;
-            dirs[key] += Number(size);
+            dirs[key] += +size;
         });
         continue;
     }

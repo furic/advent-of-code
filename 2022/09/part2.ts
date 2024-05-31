@@ -1,11 +1,12 @@
 import * as fs from 'fs';
-const input = fs.readFileSync("input", "utf8").split("\n").map(x => x.split(" ").map((y, i) => y = i === 1 ? Number(y) : y));
 
-const knots = new Array(10).fill().map(() => ({ x: 0, y: 0 }));
+const input = fs.readFileSync("input", "utf8").split("\n").map(x => x.split(" ").map((y: string | number, i) => y = i === 1 ? +y : y));
+
+const knots = new Array(10).fill(null).map(() => ({ x: 0, y: 0 }));
 const visited = new Set([`0,0`]);
 
 for (const [direction, count] of input) {
-    for (let i = 0; i < count; i++) {
+    for (let i = 0; i < (count as number); i++) {
         if (direction === 'R') knots[0].x++;
         if (direction === 'L') knots[0].x--;
         if (direction === 'D') knots[0].y++;
