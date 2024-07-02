@@ -5,18 +5,21 @@ const input = fs.readFileSync("input", "utf8").split("\n").map(line => {
     return { direction, value: +value };
 });
 
-let [pos, aim] = [0, 0];
+let [x, y, aim] = [0, 0, 0];
 
 for (const line of input) {
-    if (line.direction === 'forward') {
-        pos += line.value;
+    switch (line.direction) {
+        case 'forward':
+            x += line.value;
+            y += aim * line.value;
+            break;
+        case 'down':
+            aim += line.value;
+            break;
+        case 'up':
+            aim -= line.value;
+            break;
     }
-    if (line.direction === 'down') {
-      y += line.value;
-    }
-    if (line.direction === 'up') {
-      y -= line.value;
-    }
-  }
+}
 
 console.log(x * y);

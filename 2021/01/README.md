@@ -1,53 +1,87 @@
-\--- Day 1: Calorie Counting ---
---------------------------------
+\--- Day 1: Sonar Sweep ---
+---------------------------
 
-Santa's reindeer typically eat regular reindeer food, but they need a lot of [magical energy](/2018/day/25) to deliver presents on Christmas. For that, their favorite snack is a special type of _star_ fruit that only grows deep in the jungle. The Elves have brought you on their annual expedition to the grove where the fruit grows.
+You're minding your own business on a ship at sea when the overboard alarm goes off! You rush to see if you can help. Apparently, one of the Elves tripped and accidentally sent the sleigh keys flying into the ocean!
 
-To supply enough magical energy, the expedition needs to retrieve a minimum of _fifty stars_ by December 25th. Although the Elves assure you that the grove has plenty of fruit, you decide to grab any fruit you see along the way, just in case.
+Before you know it, you're inside a submarine the Elves keep ready for situations like this. It's covered in Christmas lights (because of course it is), and it even has an experimental antenna that should be able to track the keys if you can boost its signal strength high enough; there's a little meter that indicates the antenna's signal strength by displaying 0-50 _stars_.
+
+Your instincts tell you that in order to save Christmas, you'll need to get all _fifty stars_ by December 25th.
 
 Collect stars by solving puzzles. Two puzzles will be made available on each day in the Advent calendar; the second puzzle is unlocked when you complete the first. Each puzzle grants _one star_. Good luck!
 
-The jungle must be too overgrown and difficult to navigate in vehicles or access from the air; the Elves' expedition traditionally goes on foot. As your boats approach land, the Elves begin taking inventory of their supplies. One important consideration is food - in particular, the number of _Calories_ each Elf is carrying (your puzzle input).
+As the submarine drops below the surface of the ocean, it automatically performs a sonar sweep of the nearby sea floor. On a small screen, the sonar sweep report (your puzzle input) appears: each line is a measurement of the sea floor depth as the sweep looks further and further away from the submarine.
 
-The Elves take turns writing down the number of Calories contained by the various meals, snacks, rations, etc. that they've brought with them, one item per line. Each Elf separates their own inventory from the previous Elf's inventory (if any) by a blank line.
+For example, suppose you had the following report:
 
-For example, suppose the Elves finish writing their items' Calories and end up with the following list:
-
-    1000
-    2000
-    3000
-    
-    4000
-    
-    5000
-    6000
-    
-    7000
-    8000
-    9000
-    
-    10000
+    199
+    200
+    208
+    210
+    200
+    207
+    240
+    269
+    260
+    263
     
 
-This list represents the Calories of the food carried by five Elves:
+This report indicates that, scanning outward from the submarine, the sonar sweep found depths of `199`, `200`, `208`, `210`, and so on.
 
-*   The first Elf is carrying food with `1000`, `2000`, and `3000` Calories, a total of `_6000_` Calories.
-*   The second Elf is carrying one food item with `_4000_` Calories.
-*   The third Elf is carrying food with `5000` and `6000` Calories, a total of `_11000_` Calories.
-*   The fourth Elf is carrying food with `7000`, `8000`, and `9000` Calories, a total of `_24000_` Calories.
-*   The fifth Elf is carrying one food item with `_10000_` Calories.
+The first order of business is to figure out how quickly the depth increases, just so you know what you're dealing with - you never know if the keys will get carried into deeper water by an ocean current or a fish or something.
 
-In case the Elves get hungry and need extra snacks, they need to know which Elf to ask: they'd like to know how many Calories are being carried by the Elf carrying the _most_ Calories. In the example above, this is _`24000`_ (carried by the fourth Elf).
+To do this, count _the number of times a depth measurement increases_ from the previous measurement. (There is no measurement before the first measurement.) In the example above, the changes are as follows:
 
-Find the Elf carrying the most Calories. _How many total Calories is that Elf carrying?_
+    199 (N/A - no previous measurement)
+    200 (increased)
+    208 (increased)
+    210 (increased)
+    200 (decreased)
+    207 (increased)
+    240 (increased)
+    269 (increased)
+    260 (decreased)
+    263 (increased)
+    
+
+In this example, there are _`7`_ measurements that are larger than the previous measurement.
+
+_How many measurements are larger than the previous measurement?_
 
 \--- Part Two ---
 -----------------
 
-By the time you calculate the answer to the Elves' question, they've already realized that the Elf carrying the most Calories of food might eventually _run out of snacks_.
+Considering every single measurement isn't as useful as you expected: there's just too much noise in the data.
 
-To avoid this unacceptable situation, the Elves would instead like to know the total Calories carried by the _top three_ Elves carrying the most Calories. That way, even if one of those Elves runs out of snacks, they still have two backups.
+Instead, consider sums of a _three-measurement sliding window_. Again considering the above example:
 
-In the example above, the top three Elves are the fourth Elf (with `24000` Calories), then the third Elf (with `11000` Calories), then the fifth Elf (with `10000` Calories). The sum of the Calories carried by these three elves is `_45000_`.
+    199  A      
+    200  A B    
+    208  A B C  
+    210    B C D
+    200  E   C D
+    207  E F   D
+    240  E F G  
+    269    F G H
+    260      G H
+    263        H
+    
 
-Find the top three Elves carrying the most Calories. _How many Calories are those Elves carrying in total?_
+Start by comparing the first and second three-measurement windows. The measurements in the first window are marked `A` (`199`, `200`, `208`); their sum is `199 + 200 + 208 = 607`. The second window is marked `B` (`200`, `208`, `210`); its sum is `618`. The sum of measurements in the second window is larger than the sum of the first, so this first comparison _increased_.
+
+Your goal now is to count _the number of times the sum of measurements in this sliding window increases_ from the previous sum. So, compare `A` with `B`, then compare `B` with `C`, then `C` with `D`, and so on. Stop when there aren't enough measurements left to create a new three-measurement sum.
+
+In the above example, the sum of each three-measurement window is as follows:
+
+    A: 607 (N/A - no previous sum)
+    B: 618 (increased)
+    C: 618 (no change)
+    D: 617 (decreased)
+    E: 647 (increased)
+    F: 716 (increased)
+    G: 769 (increased)
+    H: 792 (increased)
+    
+
+In this example, there are _`5`_ sums that are larger than the previous sum.
+
+Consider sums of a three-measurement sliding window. _How many sums are larger than the previous sum?_

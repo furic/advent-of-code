@@ -1,22 +1,24 @@
 import * as fs from 'fs';
 
 const input = fs.readFileSync("input", "utf8").split("\n").map(line => {
-    const [direction, value] = line.split(' ');
-    return { direction, value: +value };
+  const [direction, value] = line.split(' ');
+  return { direction, value: +value };
 });
 
 let [x, y] = [0, 0];
 
 for (const line of input) {
-    if (line.direction === 'forward') {
+  switch (line.direction) {
+    case 'forward':
       x += line.value;
-    }
-    if (line.direction === 'down') {
+      break;
+    case 'down':
       y += line.value;
-    }
-    if (line.direction === 'up') {
+      break;
+    case 'up':
       y -= line.value;
-    }
+      break;
   }
+}
 
 console.log(x * y);
