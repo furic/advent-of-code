@@ -11,30 +11,30 @@ const value = 26501365 % input.length;
 const seen = [];
 
 for (let i = 0; i < 3; i++) {
-    const queue = [start];
-    for (let j = 0; j < value + rows * i; j++) {
-        const prevQueue = [...queue];
-        // const queueSet = new Set();
-        const queueSet = new Set(queue.map(x => x.join(",")));
-        queue.length = 0;
+		const queue = [start];
+		for (let j = 0; j < value + rows * i; j++) {
+				const prevQueue = [...queue];
+				// const queueSet = new Set();
+				const queueSet = new Set(queue.map(x => x.join(",")));
+				queue.length = 0;
 
-        while (prevQueue.length > 0) {
-            const pos = prevQueue.shift();
+				while (prevQueue.length > 0) {
+						const pos = prevQueue.shift();
 
-            for (const shift of shifts) {
-                const row = pos[0] + shift[0];
-                const column = pos[1] + shift[1];
-                const nextPos = [row, column];
-                if (!queueSet.has(nextPos.join(",")) &&
-                    input[((row % rows) + rows) % rows][((column % columns) + columns) % columns] !== "#") {
-                    queueSet.add(nextPos.join(","));
-                    queue.push(nextPos);
-                }
-            }
-        }
-    }
+						for (const shift of shifts) {
+								const row = pos[0] + shift[0];
+								const column = pos[1] + shift[1];
+								const nextPos = [row, column];
+								if (!queueSet.has(nextPos.join(",")) &&
+										input[((row % rows) + rows) % rows][((column % columns) + columns) % columns] !== "#") {
+										queueSet.add(nextPos.join(","));
+										queue.push(nextPos);
+								}
+						}
+				}
+		}
 
-    seen.push(queue.length);
+		seen.push(queue.length);
 }
 
 // https://github.com/villuna/aoc23/wiki/A-Geometric-solution-to-advent-of-code-2023,-day-21

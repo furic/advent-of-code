@@ -6,12 +6,12 @@ let result = [];
 let current = 0;
 
 for (const line of input) {
-    if (line == "") {
-        result.push(current);
-        current = 0;
-    } else {
-        current += Number(line);
-    }
+		if (line == "") {
+				result.push(current);
+				current = 0;
+		} else {
+				current += Number(line);
+		}
 }
 
 console.log(result.sort((a, b) => b - a).slice(0, 3).reduce((a, b) => a + b, 0));
