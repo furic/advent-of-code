@@ -1,5 +1,10 @@
 {
+  "name": "advent-of-code",
+  "scripts": {
+    "format": "prettier --write \"./**/*.{js,jsx,mjs,cjs,ts,tsx,json}\""
+  },
   "devDependencies": {
-    "@types/node": "^20.12.12"
+    "@types/node": "^20.12.12",
+    "prettier": "^3.3.3"
   }
 }
