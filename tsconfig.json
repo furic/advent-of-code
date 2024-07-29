@@ -1,5 +1,5 @@
 {
-  "compilerOptions": {
-    "moduleDetection": "force"
-  }
+	"compilerOptions": {
+		"moduleDetection": "force"
+	}
 }
