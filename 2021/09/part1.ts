@@ -1,6 +1,6 @@
 import * as fs from 'fs';
 
-const input = fs.readFileSync('input', 'utf8').split('\n').map(x => x.split('').map(n => Number(n)));
+const input = fs.readFileSync('input', 'utf8').split('\n').map(x => x.split('').map(Number));
 
 const getNeighbors = (x: number, y: number) => [
     input[x - 1]?.[y],

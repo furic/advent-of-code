@@ -1,9 +1,6 @@
 import * as fs from 'fs';
 
-const input = fs
-	.readFileSync('input', 'utf8')
-	.split('\n')
-	.map((value) => +value);
+const input = fs.readFileSync('input', 'utf8').split('\n').map(Number);
 
 const windows = [];
 
