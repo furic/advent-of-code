@@ -1,6 +1,6 @@
 import * as fs from 'fs';
 
-const input = fs.readFileSync('input', 'utf8').split('\n').map((row => row.split('')));
+const input = fs.readFileSync('input', 'utf8').split('\n').map((line => line.split('')));
 
 const search = 'A';
 const matches = ['MS', 'SM'];

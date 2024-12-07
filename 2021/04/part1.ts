@@ -1,17 +1,13 @@
 import * as fs from 'fs';
 
-const input = fs.readFileSync('input', 'utf8');
+const [rawNumbers, ...rawBoards] = fs.readFileSync('input', 'utf8').split('\n\n');
 
 type Slot = { marked: boolean; number: number };
 
-let [rawNumbers, ...rawBoards] = input.split('\n\n');
-const numbers = rawNumbers.split(',').map((n) => +n);
+const numbers = rawNumbers.split(',').map((n) => Number(n));
 const boards = rawBoards.map((board) =>
 	board.split('\n').map((row) =>
-		row
-			.trim()
-			.split(/\s+/)
-			.map((n) => ({ marked: false, number: +n }) as Slot),
+		row.trim().split(/\s+/).map((n) => ({ marked: false, number: Number(n) }) as Slot),
 	),
 );
 
