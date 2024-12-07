@@ -1,25 +1,24 @@
 import * as fs from 'fs';
-const input = fs
+
+const input: string[][] = fs
 	.readFileSync('input', 'utf8')
 	.split('\n')
 	.map((x) => x.split(''));
-// const input = fs.readFileSync("example", "utf8").split("\n").map(x => x.split(""));
 
-const rows = input.length;
-const columns = input[0].length;
-const invalidDirections = ['^v', 'v^', '<>', '><'];
-const interactions = {};
+const rows: number = input.length;
+const columns: number = input[0].length;
+const invalidDirections: string[] = ['^v', 'v^', '<>', '><'];
+const interactions: Record<string, Record<string, number>> = {};
 
-const findIntersections = async (row, col, direction, steps, origin) => {
-	const tileKey = [row, col].join(',');
+const findIntersections = async (row: number, col: number, direction: string, steps: number, origin: string): Promise<void> => {
+	const tileKey: string = [row, col].join(',');
 	if (row === rows - 1 && col === columns - 2) {
-		// endpoint
 		interactions[tileKey] ??= {};
 		interactions[tileKey][origin] = steps;
 		return;
 	}
 
-	const neighbors = [];
+	const neighbors: [number, number, string][] = [];
 	if (input[row - 1][col] !== '#' && !invalidDirections.includes(direction + '^')) {
 		neighbors.push([row - 1, col, '^']);
 	}
@@ -33,11 +32,11 @@ const findIntersections = async (row, col, direction, steps, origin) => {
 		neighbors.push([row, col + 1, '>']);
 	}
 	if (neighbors.length === 1) {
-		await findIntersections(...neighbors[0], steps + 1, original);
+		await findIntersections(...neighbors[0], steps + 1, origin);
 		return;
 	}
 
-	let isTileKeyChecked = tileKey in interactions;
+	let isTileKeyChecked: boolean = tileKey in interactions;
 	interactions[tileKey] ??= {};
 	interactions[tileKey][origin] = steps;
 	if (!isTileKeyChecked) {
@@ -47,32 +46,34 @@ const findIntersections = async (row, col, direction, steps, origin) => {
 	}
 };
 
-let result = 0;
+let result: number = 0;
 
-const walk = async (row, col, steps, visited) => {
-	if (row === rows - 1 && col === columns - 2) {
-		// endpoint
-		result = Math.max(result, steps);
-		return;
-	}
-	const tileKey = [row, col].join(',');
-	visited.add(tileKey);
-	for (const nextTileKey of Object.keys(interactions[tileKey])) {
-		if (visited.has(nextTileKey)) {
+const walk = async (row: number, col: number, steps: number): Promise<void> => {
+	const stack: [number, number, number, Set<string>][] = [[row, col, steps, new Set()]];
+	while (stack.length > 0) {
+		const [currentRow, currentCol, currentSteps, visited] = stack.pop()!;
+		if (currentRow === rows - 1 && currentCol === columns - 2) {
+			result = Math.max(result, currentSteps);
 			continue;
 		}
-		await walk(
-			...nextTileKey.split(',').map(Number),
-			steps + interactions[tileKey][nextTileKey],
-			new Set(visited),
-		);
+		const tileKey: string = [currentRow, currentCol].join(',');
+		visited.add(tileKey);
+		for (const nextTileKey of Object.keys(interactions[tileKey])) {
+			if (visited.has(nextTileKey)) {
+				continue;
+			}
+			const nextTile = nextTileKey.split(',').map(Number);
+			stack.push([
+				nextTile[0],
+				nextTile[1],
+				currentSteps + interactions[tileKey][nextTileKey],
+				new Set(visited),
+			]);
+		}
 	}
 };
 
-// `Maximum call stack size exceeded` occurs if using the solution in part.1 w/o `invalidDirections`
-// first, find all intersections and their connections first
-// then, try all the combination from intersections to intersections, till reaching the endpoint
-// use await and async to avoid stack size exceeded
+// First, find all intersections and their connections
 (async () => {
 	await findIntersections(1, 1, 'v', 1, '0,1');
 
@@ -83,7 +84,7 @@ const walk = async (row, col, steps, visited) => {
 		}
 	}
 
-	await walk(0, 1, 0, new Set());
+	await walk(0, 1, 0);
 
 	console.log(result);
 })();

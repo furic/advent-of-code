@@ -1,4 +1,5 @@
 import * as fs from 'fs';
+
 const input = fs.readFileSync('input', 'utf8').split('\n');
 
 const hailstones = [];
@@ -6,9 +7,8 @@ const hailstones = [];
 for (const line of input) {
 	hailstones.push(
 		line.split(' @ ').map((x) =>
-			x
-				.split(', ')
-				.map((y) => Number(y))
+			x.split(', ')
+				.map((y) => BigInt(y))
 				.slice(0, -1),
 		),
 	);
@@ -22,7 +22,6 @@ for (let i = 0; i < hailstones.length; i++) {
 		const h2 = hailstones[j];
 		const denominator = h1[1][0] * h2[1][1] - h2[1][0] * h1[1][1];
 		if (denominator === 0) {
-			// parallel
 			continue;
 		}
 		const factor1 =
