@@ -1,7 +1,10 @@
 import * as fs from 'fs';
+
 const input = fs.readFileSync('input', 'utf8').split('\n');
 
-const modules = {};
+type Module = { destinations: string[], type: string, pulseSent: boolean, pulseReceived: boolean };
+
+const modules: Module[] = [];
 const result = [0, 0];
 
 for (const line of input) {
@@ -33,7 +36,7 @@ for (const [moduleName, module] of Object.entries(modules)) {
 	}
 }
 
-function receivePulse(module) {
+function receivePulse(module: Module) {
 	return (destination) => {
 		if (typeof destination === 'undefined') {
 			result[Number(module.pulseSent)]++;

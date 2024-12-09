@@ -1,8 +1,6 @@
 import * as fs from 'fs';
-const input = fs
-	.readFileSync('input', 'utf8')
-	.split('\n')
-	.map((x) => x.split(''));
+
+const input = fs.readFileSync('input', 'utf8').split('\n').map((x) => x.split(''));
 
 const rows = input.length;
 const columns = input[0].length;
@@ -29,7 +27,7 @@ for (let i = 1; i < rows - 1; i++) {
 
 let result = 0;
 
-function walk(row, col, visited, direction) {
+function walk(row: number, col: number, visited: Set<string>, direction: string) {
 	if (row === rows - 1 && col === columns - 2) {
 		// endpoint
 		result = Math.max(result, visited.size);

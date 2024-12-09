@@ -1,17 +1,14 @@
 import * as fs from 'fs';
 
-const input: string[][] = fs
-	.readFileSync('input', 'utf8')
-	.split('\n')
-	.map((x) => x.split(''));
+const input = fs.readFileSync('input', 'utf8').split('\n').map((x) => x.split(''));
 
-const rows: number = input.length;
-const columns: number = input[0].length;
-const invalidDirections: string[] = ['^v', 'v^', '<>', '><'];
+const rows = input.length;
+const columns = input[0].length;
+const invalidDirections = ['^v', 'v^', '<>', '><'];
 const interactions: Record<string, Record<string, number>> = {};
 
 const findIntersections = async (row: number, col: number, direction: string, steps: number, origin: string): Promise<void> => {
-	const tileKey: string = [row, col].join(',');
+	const tileKey = [row, col].join(',');
 	if (row === rows - 1 && col === columns - 2) {
 		interactions[tileKey] ??= {};
 		interactions[tileKey][origin] = steps;
@@ -36,7 +33,7 @@ const findIntersections = async (row: number, col: number, direction: string, st
 		return;
 	}
 
-	let isTileKeyChecked: boolean = tileKey in interactions;
+	let isTileKeyChecked = tileKey in interactions;
 	interactions[tileKey] ??= {};
 	interactions[tileKey][origin] = steps;
 	if (!isTileKeyChecked) {
@@ -46,7 +43,7 @@ const findIntersections = async (row: number, col: number, direction: string, st
 	}
 };
 
-let result: number = 0;
+let result = 0;
 
 const walk = async (row: number, col: number, steps: number): Promise<void> => {
 	const stack: [number, number, number, Set<string>][] = [[row, col, steps, new Set()]];
@@ -56,7 +53,7 @@ const walk = async (row: number, col: number, steps: number): Promise<void> => {
 			result = Math.max(result, currentSteps);
 			continue;
 		}
-		const tileKey: string = [currentRow, currentCol].join(',');
+		const tileKey = [currentRow, currentCol].join(',');
 		visited.add(tileKey);
 		for (const nextTileKey of Object.keys(interactions[tileKey])) {
 			if (visited.has(nextTileKey)) {

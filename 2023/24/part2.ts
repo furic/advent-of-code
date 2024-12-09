@@ -1,11 +1,12 @@
 import * as fs from 'fs';
+
 const input = fs.readFileSync('input', 'utf8').split('\n');
 
 const hailstones = [];
 const velocities = [{}, {}, {}];
 
 for (const line of input) {
-	const [position, velocity] = line.split(' @ ').map((x) => x.split(', ').map((y) => Number(y)));
+	const [position, velocity] = line.split(' @ ').map((x) => x.split(', ').map(Number));
 	velocities[0][velocity[0]] ??= [];
 	velocities[0][velocity[0]].push(position[0]);
 	velocities[1][velocity[1]] ??= [];
@@ -15,23 +16,19 @@ for (const line of input) {
 	hailstones.push([position, velocity]);
 }
 
-// assuming nanosecond is the smallest time unit, and all collisions happen in a integer of nanosecond
-// we can get the velocity of the rock, that it can reach the position of each hailstones
+// Assuming nanosecond is the smallest time unit, and all collisions happen in a integer of nanosecond.
+// We can get the velocity of the rock, that it can reach the position of each hailstones,
 // by keeping the velocity that hailstones offset are divisible by the relative velocity
 const rockVelocity = velocities.map((v) => {
-	const possibleVelocity = Array(2001)
-		.fill(0)
-		.map((_, i) => i - 1000); // [-1000, ..., 1000]
+	const possibleVelocity = Array.from({ length: 2001 }, (_, i) => i - 1000); // [-1000, ..., 1000]
 	for (const velocity of Object.keys(v)) {
 		const positions = v[velocity];
-		if (positions.length < 2) {
-			// only 1 hailstone in this position
-			continue;
-		}
+		if (positions.length < 2) continue; // Only 1 hailstone in this position
 		const newPossibleVelocity = possibleVelocity.filter(
-			(x) => (positions[0] - positions[1]) % (x - velocity) === 0,
+			(x) => (positions[0] - positions[1]) % (x - Number(velocity)) === 0,
 		);
-		possibleVelocity.splice(0, possibleVelocity.length, ...newPossibleVelocity);
+		possibleVelocity.length = 0;
+		possibleVelocity.push(...newPossibleVelocity);
 	}
 	return possibleVelocity[0];
 });
@@ -56,9 +53,7 @@ for (let i = 0; i < hailstones.length; i++) {
 			(h2[0][1] - quotient2 * h2[0][0] - h1[0][1] + quotient1 * h1[0][0]) / (quotient1 - quotient2),
 		);
 		const rockY = Math.floor(quotient1 * rockX + h1[0][1] - quotient1 * h1[0][0]);
-		const rockZ =
-			h1[0][2] +
-			(h1[1][2] - rockVelocity[2]) * Math.round((rockX - h1[0][0]) / (h1[1][0] - rockVelocity[0]));
+		const rockZ = h1[0][2] + (h1[1][2] - rockVelocity[2]) * Math.round((rockX - h1[0][0]) / (h1[1][0] - rockVelocity[0]));
 		results[rockX + rockY + rockZ] ??= 0;
 		results[rockX + rockY + rockZ]++;
 	}
