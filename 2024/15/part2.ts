@@ -16,36 +16,32 @@ const offsets = {
 	'^': { x: 0, y: -1 },
 };
 
-const move = (map: string[][], x: number, y: number, offset: { x: number, y: number }) => {
+const move = (x: number, y: number, offset: { x: number, y: number }, doMove = true) => {
 	const dest = map[y + offset.y][x + offset.x];
 	switch (dest) {
 		case '.':
-			map[y + offset.y][x + offset.x] = map[y][x];
-			map[y][x] = '.';
+			if (doMove) {
+				map[y + offset.y][x + offset.x] = map[y][x];
+				map[y][x] = '.';
+			}
 			return true;
 		case '#':
 			return false;
 		default:
 			if (offset.y === 0) { // Horizontal
-				if (move(map, x + offset.x, y, offset)) {
-					move(map, x, y, offset);
+				if (move(x + offset.x, y, offset)) {
+					move(x, y, offset);
 					return true;
 				}
 			} else { // Vertical
 				let pairOffsetX = dest === '[' ? 1 : -1;
-				if (pairOffsetX !== 0) {
-					let mapClone = map.map(row => [...row]);
-					if (move(mapClone, x, y + offset.y, offset) && move(mapClone, x + pairOffsetX, y + offset.y, offset)) {
-						move(map, x, y + offset.y, offset);
-						move(map, x + pairOffsetX, y + offset.y, offset);
-						move(map, x, y, offset);
-						return true;
+				if (move(x, y + offset.y, offset, false) && move(x + pairOffsetX, y + offset.y, offset, false)) {
+					if (doMove) {
+						move(x, y + offset.y, offset);
+						move(x + pairOffsetX, y + offset.y, offset);
+						move(x, y, offset);
 					}
-				} else {
-					if (move(map, x, y + offset.y, offset)) {
-						move(map, x, y, offset);
-						return true;
-					}
+					return true;
 				}
 				return false;
 			}
@@ -54,7 +50,7 @@ const move = (map: string[][], x: number, y: number, offset: { x: number, y: num
 
 directions.forEach((direction) => {
 	const offset = offsets[direction];
-	if (move(map, position.x, position.y, offset)) {
+	if (move(position.x, position.y, offset)) {
 		position.x += offset.x;
 		position.y += offset.y;
 	}
