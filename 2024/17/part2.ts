@@ -54,14 +54,10 @@ Reverse engineer the output calculation:
 The output can be expressed as:
 output(((A % 8) ^ 2) ^ (A >> ((A % 8) ^ 2)) ^ 7)
 
-After shifting A:
-A = A >> 3
-Repeat the process until a condition is met.
+The output does not depend on the intermediate values of B and C.
+After shifting A (A = A >> 3), the process can be repeated the process until a condition is met.
 
-Function to calculate output based on A:
-getOutput(A):
-    partial = (A % 8) ^ 2
-    return ((partial ^ (A >> partial)) ^ 7) % 8
+In each iteration, A can be represented as A = 8 * (NextA) + [0..8], and so forth.
 */
 const findA0 = (nextVal = 0, i = program.length - 1) => {
 	if (i < 0) return nextVal;
