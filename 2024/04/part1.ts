@@ -1,22 +1,14 @@
 import * as fs from 'fs';
+import type { Point } from '../../types';
+import { EIGHT_WAY_DIRECTIONS } from '../../constants';
 
 const input = fs.readFileSync('input', 'utf8').split('\n').map((line => line.split('')));
 
 const search = 'XMAS';
-const directions = [
-	{ x: -1, y: 0 },
-	{ x: -1, y: 1 },
-	{ x: 0, y: 1 },
-	{ x: 1, y: 1 },
-	{ x: 1, y: 0 },
-	{ x: 1, y: -1 },
-	{ x: 0, y: -1 },
-	{ x: -1, y: -1 }
-];
 
 let result = 0;
 
-const findNext = (i: number, j: number, index: number, direction: { x: number, y: number }): boolean => {
+const findNext = (i: number, j: number, index: number, direction: Point): boolean => {
 	if (input[i]?.[j] !== search[index]) {
 		return;
 	}
@@ -29,7 +21,7 @@ const findNext = (i: number, j: number, index: number, direction: { x: number, y
 
 for (let i = 0; i < input.length; i++) {
 	for (let j = 0; j < input[i].length; j++) {
-		for (const direction of directions) {
+		for (const direction of EIGHT_WAY_DIRECTIONS) {
 			findNext(i, j, 0, direction);
 		}
 	}

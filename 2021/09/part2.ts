@@ -1,21 +1,7 @@
 import * as fs from 'fs';
+import { getNeighbors, getNeighborPositions } from '../../utils';
 
 const input = fs.readFileSync('input', 'utf8').split('\n').map(x => x.split('').map(Number));
-
-const DIRECTIONS = [
-	{ dx: -1, dy: 0 }, // left
-	{ dx: 1, dy: 0 },  // right
-	{ dx: 0, dy: -1 }, // up
-	{ dx: 0, dy: 1 }   // down
-];
-
-const getNeighbors = (x: number, y: number) =>
-	DIRECTIONS.map(({ dx, dy }) => input[x + dx]?.[y + dy])
-		.filter(n => n !== undefined);
-
-const getNeighborPositions = (x: number, y: number) =>
-	DIRECTIONS.map(({ dx, dy }) => input[x + dx]?.[y + dy] ? { x: x + dx, y: y + dy } : undefined)
-		.filter(p => p);
 
 const getAllNeighborPositions = (positionSet: Set<string>, x: number, y: number) => {
 	const positionKey = `${x},${y}`;
@@ -23,7 +9,7 @@ const getAllNeighborPositions = (positionSet: Set<string>, x: number, y: number)
 		return;
 	}
 	positionSet.add(positionKey);
-	getNeighborPositions(x, y).map((p) => getAllNeighborPositions(positionSet, p.x, p.y));
+	getNeighborPositions(input, x, y).map((p) => getAllNeighborPositions(positionSet, p.x, p.y));
 	return positionSet;
 }
 
@@ -31,7 +17,7 @@ let basins = [];
 
 for (let x = 0; x < input.length; x++) {
 	for (let y = 0; y < input[x].length; y++) {
-		const neighbors = getNeighbors(x, y);
+		const neighbors = getNeighbors(input, x, y);
 		const highNeighbors = neighbors.filter((n) => n > input[x][y]);
 		if (highNeighbors.length === neighbors.length) {
 			const positionSet: Set<string> = new Set();

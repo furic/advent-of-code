@@ -1,8 +1,8 @@
 import * as fs from 'fs';
+import type { Point } from '../../types';
 
 const input = fs.readFileSync('input', 'utf8');
 
-type Point = { x: number; y: number };
 type Stream = { input: string; index: number };
 
 const rocks = 2022;

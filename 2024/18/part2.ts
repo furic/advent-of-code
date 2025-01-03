@@ -1,15 +1,9 @@
 import * as fs from 'fs';
+import { getNeighborPositions } from '../../utils';
 
 const input = fs.readFileSync('input', 'utf8').split('\n');
 
 const SIZE = 71;
-
-const directions = [
-	{ x: -1, y: 0 },
-	{ x: 0, y: 1 },
-	{ x: 1, y: 0 },
-	{ x: 0, y: -1 },
-];
 
 let result = 1025;
 while (true) {
@@ -32,11 +26,10 @@ while (true) {
 			continue;
 		}
 
-		const neighbors = directions
-			.map((direction) => ({ x: current.x + direction.x, y: current.y + direction.y }))
-			.filter((neighbor) => map[neighbor.y]?.[neighbor.x] && map[neighbor.y]?.[neighbor.x] !== '#' && !current.visited.has(`${neighbor.x},${neighbor.y}`));
+		const neighborPoints = getNeighborPositions(map, current)
+			.filter((point) => map[point.y]?.[point.x] !== '#' && !current.visited.has(`${point.x},${point.y}`));
 
-		let searches = neighbors.map((neighbor) => ({
+		let searches = neighborPoints.map((neighbor) => ({
 			...neighbor,
 			visited: new Set([...current.visited, `${neighbor.x},${neighbor.y}`]),
 		}));
@@ -52,7 +45,7 @@ while (true) {
 	if (steps === Infinity) {
 		break;
 	}
-	
+
 	result++;
 }
 

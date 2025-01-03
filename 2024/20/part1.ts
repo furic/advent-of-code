@@ -1,13 +1,8 @@
 import * as fs from 'fs';
+import { getNeighbors } from '../../utils';
 
 const input = fs.readFileSync('input', 'utf8').split('\n');
 
-const directions = [
-	{ x: 1, y: 0 },
-	{ x: 0, y: -1 },
-	{ x: -1, y: 0 },
-	{ x: 0, y: 1 },
-];
 const shortcutRequired = 100;
 
 let start = { x: 0, y: 0, isWall: false };
@@ -40,9 +35,7 @@ const race = (maze: { x: number, y: number, isWall: boolean }[][]) => {
 			continue;
 		}
 
-		const neighbors = directions
-			.map((direction) => (maze[current.y + direction.y][current.x + direction.x]))
-			.filter((cell) => cell && !cell.isWall);
+		const neighbors = getNeighbors(maze, current).filter((cell) => cell && !cell.isWall);
 
 		let searches = neighbors.map((neighbor) => ({
 			x: neighbor.x,
@@ -70,9 +63,7 @@ let result = 0;
 for (let x = 1; x < maze[0].length - 1; x++) {
 	for (let y = 1; y < maze.length - 1; y++) {
 		if (maze[y][x].isWall) {
-			const neighbors = directions
-				.map((direction) => (maze[y + direction.y][x + direction.x]))
-				.filter((cell) => cell && !cell.isWall);
+			const neighbors = getNeighbors(maze, x, y).filter((cell) => cell && !cell.isWall);
 
 			if (neighbors.length === 2 && (
 				Math.abs(neighbors[0].x - neighbors[1].x) === 2 ||

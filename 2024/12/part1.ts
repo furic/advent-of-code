@@ -1,19 +1,13 @@
 import * as fs from 'fs';
+import { ORTHOGONAL_DIRECTIONS } from '../../constants';
 
 const input = fs.readFileSync('input', 'utf8').split('\n').map((line => line.split('')));
-
-const directions = [
-	{ x: -1, y: 0 },
-	{ x: 0, y: 1 },
-	{ x: 1, y: 0 },
-	{ x: 0, y: -1 },
-];
 
 const getArea = (x: number, y: number, area: Set<string>) => {
 	const key = `${x},${y}`;
 	if (!area.has(key)) {
 		area.add(key);
-		for (const direction of directions) {
+		for (const direction of ORTHOGONAL_DIRECTIONS) {
 			if (input[y][x] === input[y + direction.y]?.[x + direction.x]) {
 				getArea(x + direction.x, y + direction.y, area);
 			}
@@ -24,7 +18,7 @@ const getArea = (x: number, y: number, area: Set<string>) => {
 const getFenceCount = (key: string) => {
 	const [x, y] = key.split(',').map(Number);
 	let count = 4;
-	for (const direction of directions) {
+	for (const direction of ORTHOGONAL_DIRECTIONS) {
 		if (input[y][x] === input[y + direction.y]?.[x + direction.x]) {
 			count--;
 		}
