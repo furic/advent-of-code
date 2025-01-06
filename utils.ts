@@ -33,3 +33,21 @@ export const getNeighborPositions = <T>(input: T[][], arg1: number | Point, arg2
         .filter((point) => input[point.y]?.[point.x]);
 }
 
+export const parsePoint = (str: string) => {
+    const [x, y] = str.split(',').map(Number);
+    return { x, y } as Point;
+}
+
+export const pointToString = (p: Point) => `${p.x},${p.y}`;
+
+export const drawPoints = (points: Point[]) => {
+    let maxX = Math.max(...points.map(p => p.x)) + 1;
+    let maxY = Math.max(...points.map(p => p.y)) + 1;
+    let board = new Array(maxY).fill(null).map(() => new Array(maxX).fill("."));
+    points.forEach((p) => (board[p.y][p.x] = "#"));
+    drawBoard(board);
+}
+
+export const drawBoard = (board: string[][]) => {
+    console.log(board.map(row => row.join("")).join("\n"));
+}
