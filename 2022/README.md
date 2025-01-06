@@ -9,11 +9,11 @@ To run TypeScripts in terminal, easiest way is using `ts-node`:
 The repo uses `@types/node` type definitions for node:
 ```
 > npm i
-> ts-node <filename>.ts
+> ts-node <filename>
 ```
 Otherwise, you can also skip `npm i` by ignoring the type errors:
 ```
-> ts-node --logError <filename>.ts
+> ts-node --logError <filename>
 ```
 
 ## Calendar
