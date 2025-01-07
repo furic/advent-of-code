@@ -25,7 +25,7 @@ const fixOrder = (values: number[]) => {
 		for (let i = 0; i < values.length - 1; i++) {
 			const requiredPages = rules[values[i]] || [];
 			const nextPages = values.slice(i + 1);
-			const wrongOrderPageIndex = nextPages.findIndex(value => requiredPages.includes(value));
+			const wrongOrderPageIndex = nextPages.findIndex((value) => requiredPages.includes(value));
 			if (wrongOrderPageIndex !== -1) {
 				const wrongOrderPageValue = nextPages[wrongOrderPageIndex];
 				values.splice(i + 1 + wrongOrderPageIndex, 1);
@@ -43,6 +43,9 @@ const incorrectOrderedUpdates = updates.filter((values) => !isRightOrder(values)
 
 const correctOrderedUpdates = incorrectOrderedUpdates.map(fixOrder);
 
-const result = correctOrderedUpdates.reduce((acc, values) => acc + values[Math.floor(values.length / 2)], 0);
+const result = correctOrderedUpdates.reduce(
+	(acc, values) => acc + values[Math.floor(values.length / 2)],
+	0,
+);
 
 console.log(result);

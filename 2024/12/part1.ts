@@ -1,7 +1,10 @@
 import * as fs from 'fs';
 import { ORTHOGONAL_DIRECTIONS } from '../../constants';
 
-const input = fs.readFileSync('input', 'utf8').split('\n').map((line => line.split('')));
+const input = fs
+	.readFileSync('input', 'utf8')
+	.split('\n')
+	.map((line) => line.split(''));
 
 const getArea = (x: number, y: number, area: Set<string>) => {
 	const key = `${x},${y}`;
@@ -24,7 +27,7 @@ const getFenceCount = (key: string) => {
 		}
 	}
 	return count;
-}
+};
 
 let result = 0;
 let visited = new Set<string>();

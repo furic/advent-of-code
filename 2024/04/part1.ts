@@ -2,7 +2,10 @@ import * as fs from 'fs';
 import type { Point } from '../../types';
 import { EIGHT_WAY_DIRECTIONS } from '../../constants';
 
-const input = fs.readFileSync('input', 'utf8').split('\n').map((line => line.split('')));
+const input = fs
+	.readFileSync('input', 'utf8')
+	.split('\n')
+	.map((line) => line.split(''));
 
 const search = 'XMAS';
 

@@ -1,20 +1,27 @@
 import * as fs from 'fs';
 import { getNeighborPositions } from '../../utils';
 
-const input = fs.readFileSync('input', 'utf8').split('\n').map((line => line.split('').map(Number)));
+const input = fs
+	.readFileSync('input', 'utf8')
+	.split('\n')
+	.map((line) => line.split('').map(Number));
 
 const getIncrementNeighborPositions = (x: number, y: number) =>
-	getNeighborPositions(input, x, y)
-		.filter((neighborPosition) => input[neighborPosition.y][neighborPosition.x] === input[y][x] + 1);
+	getNeighborPositions(input, x, y).filter(
+		(neighborPosition) => input[neighborPosition.y][neighborPosition.x] === input[y][x] + 1,
+	);
 
 const getTrailEnds = (x: number, y: number) => {
 	if (input[y][x] === 9) return new Set([`${x},${y}`]);
 	const incrementNeighborPositions = getIncrementNeighborPositions(x, y);
 	if (incrementNeighborPositions.length > 0) {
-		return incrementNeighborPositions.reduce((acc, pos) => new Set([...acc, ...getTrailEnds(pos.x, pos.y)]), new Set());
+		return incrementNeighborPositions.reduce(
+			(acc, pos) => new Set([...acc, ...getTrailEnds(pos.x, pos.y)]),
+			new Set(),
+		);
 	}
 	return new Set();
-}
+};
 
 let result = 0;
 for (let x = 0; x < input.length; x++) {

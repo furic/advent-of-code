@@ -1,6 +1,8 @@
 import * as fs from 'fs';
 
-const input = fs.readFileSync('input', 'utf8').split('\n')
+const input = fs
+	.readFileSync('input', 'utf8')
+	.split('\n')
 	.map((line) => {
 		const [direction, value] = line.split(' ');
 		return { direction, value: +value };

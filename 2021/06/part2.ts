@@ -10,7 +10,7 @@ for (let i = 0; i < input.length; i++) {
 for (let i = 0; i < days; i++) {
 	const next = {};
 	for (const key in map) {
-		if (key === "0") {
+		if (key === '0') {
 			next[6] = (next[6] || 0) + map[key];
 			next[8] = (next[8] || 0) + map[key];
 		} else {

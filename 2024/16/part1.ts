@@ -24,7 +24,15 @@ const maze = input.map((line, row) =>
 	}),
 );
 
-const queue = [{ x: start.x, y: start.y, directionName: 'east', score: 0, visited: new Set([`${start.x},${start.y}`]) }];
+const queue = [
+	{
+		x: start.x,
+		y: start.y,
+		directionName: 'east',
+		score: 0,
+		visited: new Set([`${start.x},${start.y}`]),
+	},
+];
 const visited = new Map();
 visited.set(`${start.x},${start.y},east`, 0);
 
@@ -36,7 +44,7 @@ while (queue.length > 0) {
 		result = Math.min(current.score, result);
 		continue;
 	}
-	
+
 	const neighbors = directions
 		.map((direction) => ({ ...maze[current.y + direction.y][current.x + direction.x], direction }))
 		.filter((cell) => cell && !cell.isWall && !current.visited.has(`${cell.x},${cell.y}`));
@@ -50,11 +58,13 @@ while (queue.length > 0) {
 	}));
 	searches = searches.filter((search) => {
 		const key = `${search.x},${search.y},${search.directionName}`;
-		return (!visited.has(key) || visited.get(key) > search.score);
-	})
+		return !visited.has(key) || visited.get(key) > search.score;
+	});
 
 	queue.push(...searches);
-	searches.forEach((search) => visited.set(`${search.x},${search.y},${search.directionName}`, search.score));
+	searches.forEach((search) =>
+		visited.set(`${search.x},${search.y},${search.directionName}`, search.score),
+	);
 }
 
 console.log(result);

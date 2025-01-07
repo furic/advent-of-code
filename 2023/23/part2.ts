@@ -1,13 +1,22 @@
 import * as fs from 'fs';
 
-const input = fs.readFileSync('input', 'utf8').split('\n').map((x) => x.split(''));
+const input = fs
+	.readFileSync('input', 'utf8')
+	.split('\n')
+	.map((x) => x.split(''));
 
 const rows = input.length;
 const columns = input[0].length;
 const invalidDirections = ['^v', 'v^', '<>', '><'];
 const interactions: Record<string, Record<string, number>> = {};
 
-const findIntersections = async (row: number, col: number, direction: string, steps: number, origin: string): Promise<void> => {
+const findIntersections = async (
+	row: number,
+	col: number,
+	direction: string,
+	steps: number,
+	origin: string,
+): Promise<void> => {
 	const tileKey = [row, col].join(',');
 	if (row === rows - 1 && col === columns - 2) {
 		interactions[tileKey] ??= {};

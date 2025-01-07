@@ -4,7 +4,7 @@ import { parsePoint, pointToString, drawPoints } from '../../utils';
 const [rawDots, rawInstructions] = fs.readFileSync('input', 'utf8').split('\n\n');
 
 let dots = new Set(rawDots.split('\n'));
-const instructions = rawInstructions.split('\n').map(line => {
+const instructions = rawInstructions.split('\n').map((line) => {
 	let [axis, number] = line.replace('fold along ', '').split('=');
 	return { axis, number: Number(number) };
 });
@@ -24,7 +24,7 @@ const fold = (repeat = 1) => {
 		}
 		dots = newDots;
 	}
-}
+};
 
 fold(instructions.length);
 

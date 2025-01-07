@@ -1,7 +1,9 @@
 import * as fs from 'fs';
 
-const input = fs.readFileSync('input', 'utf8').split('\n')
-	.map(line => line.split(/\s+/).map(Number));
+const input = fs
+	.readFileSync('input', 'utf8')
+	.split('\n')
+	.map((line) => line.split(/\s+/).map(Number));
 
 const frequencyMap = new Map<number, number>();
 

@@ -6,9 +6,9 @@ const disk: (number | undefined)[] = [];
 input.forEach((num, index) => {
 	if (index % 2 === 0) {
 		const id = index / 2;
-		disk.push(...(Array(num).fill(id)));
+		disk.push(...Array(num).fill(id));
 	} else {
-		disk.push(...(Array(num).fill(undefined)));
+		disk.push(...Array(num).fill(undefined));
 	}
 });
 

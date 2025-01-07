@@ -7,10 +7,8 @@ const patterns = patternsRaw.split('\n');
 let impossibles = new Set<string>();
 
 const isPossible = (pattern: string) => {
-	if (towels.has(pattern))
-		return true;
-	if (impossibles.has(pattern) || pattern.length === 1)
-		return false;
+	if (towels.has(pattern)) return true;
+	if (impossibles.has(pattern) || pattern.length === 1) return false;
 	for (let i = 1; i < pattern.length; i++) {
 		if (isPossible(pattern.slice(0, i)) && isPossible(pattern.slice(i))) {
 			return true;
@@ -18,7 +16,7 @@ const isPossible = (pattern: string) => {
 	}
 	impossibles.add(pattern);
 	return false;
-}
+};
 
 const result = patterns.reduce((acc, pattern) => acc + Number(isPossible(pattern)), 0);
 

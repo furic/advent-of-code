@@ -1,7 +1,10 @@
 import * as fs from 'fs';
 import { getNeighbors, getNeighborPositions } from '../../utils';
 
-const input = fs.readFileSync('input', 'utf8').split('\n').map(x => x.split('').map(Number));
+const input = fs
+	.readFileSync('input', 'utf8')
+	.split('\n')
+	.map((x) => x.split('').map(Number));
 
 const getAllNeighborPositions = (positionSet: Set<string>, x: number, y: number) => {
 	const positionKey = `${x},${y}`;
@@ -11,7 +14,7 @@ const getAllNeighborPositions = (positionSet: Set<string>, x: number, y: number)
 	positionSet.add(positionKey);
 	getNeighborPositions(input, x, y).map((p) => getAllNeighborPositions(positionSet, p.x, p.y));
 	return positionSet;
-}
+};
 
 let basins = [];
 
@@ -26,4 +29,9 @@ for (let x = 0; x < input.length; x++) {
 	}
 }
 
-console.log(basins.sort((a, b) => b - a).slice(0, 3).reduce((prev, size) => prev * size, 1));
+console.log(
+	basins
+		.sort((a, b) => b - a)
+		.slice(0, 3)
+		.reduce((prev, size) => prev * size, 1),
+);

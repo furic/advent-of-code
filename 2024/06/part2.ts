@@ -1,8 +1,11 @@
 import * as fs from 'fs';
 
-const input = fs.readFileSync('input', 'utf8').split('\n').map((line => line.split('')));
+const input = fs
+	.readFileSync('input', 'utf8')
+	.split('\n')
+	.map((line) => line.split(''));
 
-const startY = input.findIndex(line => line.includes('^'));
+const startY = input.findIndex((line) => line.includes('^'));
 const startX = input[startY].indexOf('^');
 const start = { x: startX, y: startY, direction: 'up' };
 
@@ -33,20 +36,20 @@ while (input[current.y]?.[current.x]) {
 }
 
 let result = 0;
-visited.forEach(pos => {
-	const [x, y] = pos.split(",").map(Number);
-	const map = input.map(row => [...row]);
-	map[y][x] = "#";
+visited.forEach((pos) => {
+	const [x, y] = pos.split(',').map(Number);
+	const map = input.map((row) => [...row]);
+	map[y][x] = '#';
 	current = { ...start };
 	const turns = new Set<string>();
 
 	while (map[current.y]?.[current.x]) {
 		const next = { ...current };
-		while (map[next.y]?.[next.x] === ".") {
+		while (map[next.y]?.[next.x] === '.') {
 			next.x += STEP[current.direction].x;
 			next.y += STEP[current.direction].y;
 		}
-		if (map[next.y]?.[next.x] === "#") {
+		if (map[next.y]?.[next.x] === '#') {
 			next.x -= STEP[current.direction].x;
 			next.y -= STEP[current.direction].y;
 			next.direction = STEP[current.direction].turnDirection;

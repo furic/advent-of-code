@@ -24,7 +24,15 @@ const maze = input.map((line, row) =>
 	}),
 );
 
-const queue = [{ x: start.x, y: start.y, directionName: 'east', score: 0, visited: new Set([`${start.x},${start.y}`]) }];
+const queue = [
+	{
+		x: start.x,
+		y: start.y,
+		directionName: 'east',
+		score: 0,
+		visited: new Set([`${start.x},${start.y}`]),
+	},
+];
 const visited = new Map();
 visited.set(`${start.x},${start.y},east`, 0);
 
@@ -53,11 +61,13 @@ while (queue.length > 0) {
 	}));
 	searches = searches.filter((search) => {
 		const key = `${search.x},${search.y},${search.directionName}`;
-		return (!visited.has(key) || visited.get(key) >= search.score); // Part2: allow revisit the same cell same direction, if score is less or equal
-	})
+		return !visited.has(key) || visited.get(key) >= search.score; // Part2: allow revisit the same cell same direction, if score is less or equal
+	});
 
 	queue.push(...searches);
-	searches.forEach((search) => visited.set(`${search.x},${search.y},${search.directionName}`, search.score));
+	searches.forEach((search) =>
+		visited.set(`${search.x},${search.y},${search.directionName}`, search.score),
+	);
 }
 
 console.log(result.size);

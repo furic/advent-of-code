@@ -7,8 +7,8 @@ const SIZE = 71;
 
 let result = 1025;
 while (true) {
-	const map: string[][] = Array.from({ length: SIZE }, () => Array(SIZE).fill("."));
-	input.slice(0, result).forEach(line => {
+	const map: string[][] = Array.from({ length: SIZE }, () => Array(SIZE).fill('.'));
+	input.slice(0, result).forEach((line) => {
 		const [x, y] = line.split(',').map(Number);
 		map[y][x] = '#';
 	});
@@ -26,8 +26,9 @@ while (true) {
 			continue;
 		}
 
-		const neighborPoints = getNeighborPositions(map, current)
-			.filter((point) => map[point.y]?.[point.x] !== '#' && !current.visited.has(`${point.x},${point.y}`));
+		const neighborPoints = getNeighborPositions(map, current).filter(
+			(point) => map[point.y]?.[point.x] !== '#' && !current.visited.has(`${point.x},${point.y}`),
+		);
 
 		let searches = neighborPoints.map((neighbor) => ({
 			...neighbor,
@@ -35,8 +36,8 @@ while (true) {
 		}));
 		searches = searches.filter((search) => {
 			const key = `${search.x},${search.y}`;
-			return (!visited.has(key) || visited.get(key) > search.visited.size);
-		})
+			return !visited.has(key) || visited.get(key) > search.visited.size;
+		});
 
 		queue.push(...searches);
 		searches.forEach((search) => visited.set(`${search.x},${search.y}`, search.visited.size));

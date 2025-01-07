@@ -25,7 +25,7 @@ const getEvolvedTotal = (value: number, repeat: number) => {
 
 	evolveMap.set(key, total);
 	return total;
-}
+};
 
 const result = input.reduce((acc, value) => acc + getEvolvedTotal(value, 75), 0);
 

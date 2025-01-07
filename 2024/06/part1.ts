@@ -1,8 +1,11 @@
 import * as fs from 'fs';
 
-const input = fs.readFileSync('input', 'utf8').split('\n').map((line => line.split('')));
+const input = fs
+	.readFileSync('input', 'utf8')
+	.split('\n')
+	.map((line) => line.split(''));
 
-const startY = input.findIndex(line => line.includes('^'));
+const startY = input.findIndex((line) => line.includes('^'));
 const startX = input[startY].indexOf('^');
 let current = { x: startX, y: startY, direction: 'up' };
 

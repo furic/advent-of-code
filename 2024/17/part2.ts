@@ -39,7 +39,7 @@ const run = () => {
 		}
 	}
 	return output;
-}
+};
 
 /* 
 Reverse engineer the output calculation:

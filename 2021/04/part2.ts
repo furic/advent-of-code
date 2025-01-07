@@ -7,7 +7,10 @@ type Slot = { marked: boolean; number: number };
 const numbers = rawNumbers.split(',').map((n) => Number(n));
 let boards = rawBoards.map((board) =>
 	board.split('\n').map((row) =>
-		row.trim().split(/\s+/).map((n) => ({ marked: false, number: Number(n) }) as Slot),
+		row
+			.trim()
+			.split(/\s+/)
+			.map((n) => ({ marked: false, number: Number(n) }) as Slot),
 	),
 );
 

@@ -1,12 +1,21 @@
 import * as fs from 'fs';
 
-const input = fs.readFileSync('input', 'utf8').split('\n').map((line => line.split('')));
+const input = fs
+	.readFileSync('input', 'utf8')
+	.split('\n')
+	.map((line) => line.split(''));
 
 const search = 'A';
 const matches = ['MS', 'SM'];
 const directionPairs = [
-	[{ x: -1, y: 1 }, { x: 1, y: -1 }],
-	[{ x: 1, y: 1 }, { x: -1, y: -1 }]
+	[
+		{ x: -1, y: 1 },
+		{ x: 1, y: -1 },
+	],
+	[
+		{ x: 1, y: 1 },
+		{ x: -1, y: -1 },
+	],
 ];
 
 let result = 0;
@@ -16,8 +25,10 @@ for (let i = 0; i < input.length; i++) {
 		if (input[i][j] === search) {
 			let matched = 0;
 			for (const directionPair of directionPairs) {
-				const directionPairString = directionPair.reduce((acc, direction) =>
-					acc + input[i + direction.x]?.[j + direction.y], '');
+				const directionPairString = directionPair.reduce(
+					(acc, direction) => acc + input[i + direction.x]?.[j + direction.y],
+					'',
+				);
 				if (matches.includes(directionPairString)) {
 					matched++;
 				}

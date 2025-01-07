@@ -2,7 +2,7 @@ import * as fs from 'fs';
 
 const input = fs.readFileSync('input', 'utf8').split('\n');
 
-type Module = { destinations: string[], type: string, pulseSent: boolean, pulseReceived: boolean };
+type Module = { destinations: string[]; type: string; pulseSent: boolean; pulseReceived: boolean };
 
 const modules: Module[] = [];
 const result = [0, 0];

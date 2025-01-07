@@ -1,11 +1,14 @@
 import * as fs from 'fs';
 
-const input = fs.readFileSync('input', 'utf8').split('\n').map((line => line.split('')));
+const input = fs
+	.readFileSync('input', 'utf8')
+	.split('\n')
+	.map((line) => line.split(''));
 
-const antennas = new Map<string, { x: number, y: number }[]>();
+const antennas = new Map<string, { x: number; y: number }[]>();
 input.forEach((row, y) => {
 	row.forEach((cell, x) => {
-		if (cell !== ".") {
+		if (cell !== '.') {
 			antennas.set(cell, (antennas.get(cell) || []).concat({ x, y }));
 		}
 	});

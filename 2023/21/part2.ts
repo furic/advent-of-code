@@ -1,6 +1,9 @@
 import * as fs from 'fs';
 
-const input = fs.readFileSync('input', 'utf8').split('\n').map((x) => x.split(''));
+const input = fs
+	.readFileSync('input', 'utf8')
+	.split('\n')
+	.map((x) => x.split(''));
 
 const rows = input.length;
 const columns = input[0].length;

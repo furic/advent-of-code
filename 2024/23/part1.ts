@@ -5,8 +5,8 @@ const input = fs.readFileSync('input', 'utf8').split('\n');
 const pairMap = new Map<string, string[]>();
 input.forEach((line) => {
 	const [c1, c2] = line.split('-');
-	pairMap.set(c1, [...pairMap.get(c1) ?? [], c2]);
-	pairMap.set(c2, [...pairMap.get(c2) ?? [], c1]);
+	pairMap.set(c1, [...(pairMap.get(c1) ?? []), c2]);
+	pairMap.set(c2, [...(pairMap.get(c2) ?? []), c1]);
 });
 
 const pairedSet = new Set<string>();

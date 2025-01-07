@@ -21,6 +21,9 @@ const isRightOrder = (values: number[]) => {
 
 const correctOrderedUpdates = updates.filter(isRightOrder);
 
-const result = correctOrderedUpdates.reduce((acc, values) => acc + values[Math.floor(values.length / 2)], 0);
+const result = correctOrderedUpdates.reduce(
+	(acc, values) => acc + values[Math.floor(values.length / 2)],
+	0,
+);
 
 console.log(result);

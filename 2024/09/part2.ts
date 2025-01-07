@@ -8,9 +8,9 @@ input.forEach((num, index) => {
 	if (index % 2 === 0) {
 		const id = index / 2;
 		fileSizeMap.set(id, num);
-		disk.push(...(Array(num).fill(id)));
+		disk.push(...Array(num).fill(id));
 	} else {
-		disk.push(...(Array(num).fill(undefined)));
+		disk.push(...Array(num).fill(undefined));
 	}
 });
 

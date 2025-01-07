@@ -53,7 +53,9 @@ for (let i = 0; i < hailstones.length; i++) {
 			(h2[0][1] - quotient2 * h2[0][0] - h1[0][1] + quotient1 * h1[0][0]) / (quotient1 - quotient2),
 		);
 		const rockY = Math.floor(quotient1 * rockX + h1[0][1] - quotient1 * h1[0][0]);
-		const rockZ = h1[0][2] + (h1[1][2] - rockVelocity[2]) * Math.round((rockX - h1[0][0]) / (h1[1][0] - rockVelocity[0]));
+		const rockZ =
+			h1[0][2] +
+			(h1[1][2] - rockVelocity[2]) * Math.round((rockX - h1[0][0]) / (h1[1][0] - rockVelocity[0]));
 		results[rockX + rockY + rockZ] ??= 0;
 		results[rockX + rockY + rockZ]++;
 	}

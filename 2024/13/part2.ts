@@ -1,12 +1,22 @@
 import * as fs from 'fs';
 
-const input = fs.readFileSync('input', 'utf8').split('\n\n').map((block => {
-	const [rawA, rawB, rawPrize] = block.split('\n');
-	const [, xA, yA] = rawA.match(/X\+(\d+), Y\+(\d+)/);
-	const [, xB, yB] = rawB.match(/X\+(\d+), Y\+(\d+)/);
-	const [, xPrize, yPrize] = rawPrize.match(/X=(\d+), Y=(\d+)/);
-	return { xA: Number(xA), yA: Number(yA), xB: Number(xB), yB: Number(yB), xPrize: Number(xPrize) + 10000000000000, yPrize: Number(yPrize) + 10000000000000 };
-}));
+const input = fs
+	.readFileSync('input', 'utf8')
+	.split('\n\n')
+	.map((block) => {
+		const [rawA, rawB, rawPrize] = block.split('\n');
+		const [, xA, yA] = rawA.match(/X\+(\d+), Y\+(\d+)/);
+		const [, xB, yB] = rawB.match(/X\+(\d+), Y\+(\d+)/);
+		const [, xPrize, yPrize] = rawPrize.match(/X=(\d+), Y=(\d+)/);
+		return {
+			xA: Number(xA),
+			yA: Number(yA),
+			xB: Number(xB),
+			yB: Number(yB),
+			xPrize: Number(xPrize) + 10000000000000,
+			yPrize: Number(yPrize) + 10000000000000,
+		};
+	});
 
 // xPrize = countA * xA + countB * xB
 // yPrize = countA * yA + countB * yB
@@ -24,7 +34,7 @@ const solve = ({ xA, yA, xB, yB, xPrize, yPrize }) => {
 		return countA * 3 + countB;
 	}
 	return 0;
-}
+};
 
 let result = input.map(solve).reduce((a, b) => a + b, 0);
 

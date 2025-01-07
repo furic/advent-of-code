@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 
 const [polymer, inserts] = fs.readFileSync('input', 'utf8').split('\n\n');
-const insertsMap = Object.fromEntries(inserts.split('\n').map(line => line.split(' -> ')));
+const insertsMap = Object.fromEntries(inserts.split('\n').map((line) => line.split(' -> ')));
 
 const REPEATS = 10;
 

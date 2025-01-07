@@ -1,6 +1,9 @@
 import * as fs from 'fs';
 
-const input = fs.readFileSync('input', 'utf8').split('\n').map((line => line.split('')));
+const input = fs
+	.readFileSync('input', 'utf8')
+	.split('\n')
+	.map((line) => line.split(''));
 
 const directions = [
 	{ x: -1, y: 0, name: 'left' },
@@ -29,7 +32,7 @@ const getFences = (key: string, fences: Set<string>) => {
 		}
 		fences.add(`${direction.name},${x},${y}`);
 	}
-}
+};
 
 const getSideCount = (directionName: string, fences: Set<string>) => {
 	const fenceKeys = Array.from(fences).filter((fenceKey) => fenceKey.startsWith(directionName));
@@ -48,7 +51,7 @@ const getSideCount = (directionName: string, fences: Set<string>) => {
 		count += sortedPositions.filter((v, i) => i === 0 || v - sortedPositions[i - 1] > 1).length;
 	}
 	return count;
-}
+};
 
 let result = 0;
 let visited = new Set<string>();

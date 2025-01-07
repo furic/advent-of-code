@@ -8,7 +8,7 @@ const hash = (n: number) => {
 	n = (n ^ (n * 64)) & 16777215;
 	n = (n ^ (n / 32)) & 16777215;
 	return (n ^ (n * 2048)) & 16777215;
-}
+};
 
 let secrets: number[] = [...input];
 for (let i = 0; i < hashRepeats; i++) {
