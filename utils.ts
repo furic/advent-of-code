@@ -1,4 +1,4 @@
-import type { Point } from "./types";
+import type { Point, PathFindingPoint } from "./types";
 import { ORTHOGONAL_DIRECTIONS } from "./constants";
 
 export const getNeighbors = <T>(input: T[][], arg1: number | Point, arg2?: number): T[] => {
@@ -50,4 +50,69 @@ export const drawPoints = (points: Point[]) => {
 
 export const drawBoard = (board: string[][]) => {
     console.log(board.map(row => row.join("")).join("\n"));
+}
+
+export const findPathScore = (board: PathFindingPoint[][], start: PathFindingPoint, isEnd: (current: Point) => boolean, findMin = true) => {
+    const queue = [{ x: start.x, y: start.y, score: start.score }];
+    const visited = new Map<string, number>();
+
+    let result = Infinity;
+
+    while (queue.length > 0) {
+        const current = queue.shift();
+        if (isEnd(current)) {
+            result = Math.min(current.score, result);
+            continue;
+        }
+
+        const neighbors = getNeighbors(board, current).filter((neighbor) => !neighbor.isWall);
+        let searches = neighbors.map((neighbor) => ({
+            x: neighbor.x,
+            y: neighbor.y,
+            score: current.score + neighbor.score,
+        })).filter((search) => {
+            const key = `${search.x},${search.y}`;
+            return (!visited.has(key) || (findMin ? visited.get(key) > search.score : visited.get(key) < search.score));
+        })
+
+        queue.push(...searches);
+        queue.sort((a, b) => (a.score - b.score) * (findMin ? 1 : -1));
+        searches.forEach((search) => visited.set(`${search.x},${search.y}`, search.score));
+    }
+
+    return result;
+}
+
+export const findPathVisited = (board: PathFindingPoint[][], start: PathFindingPoint, isEnd: (current: Point) => boolean, findMin = true) => {
+    const queue = [{ x: start.x, y: start.y, score: start.score, visited: [start] }];
+    const visited = new Map<string, number>();
+
+    let score = Infinity;
+    let result = [start];
+
+    while (queue.length > 0) {
+        const current = queue.shift();
+        if (isEnd(current)) {
+            score = Math.min(current.score, score);
+            result = current.visited;
+            continue;
+        }
+
+        const neighbors = getNeighbors(board, current).filter((neighbor) => !neighbor.isWall);
+        let searches = neighbors.map((neighbor) => ({
+            x: neighbor.x,
+            y: neighbor.y,
+            score: current.score + neighbor.score,
+            visited: [...current.visited, neighbor],
+        })).filter((search) => {
+            const key = `${search.x},${search.y}`;
+            return (!visited.has(key) || (findMin ? visited.get(key) > search.score : visited.get(key) < search.score));
+        })
+
+        queue.push(...searches);
+        queue.sort((a, b) => (a.score - b.score) * (findMin ? 1 : -1));
+        searches.forEach((search) => visited.set(`${search.x},${search.y}`, search.score));
+    }
+
+    return result;
 }
