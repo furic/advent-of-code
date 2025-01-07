@@ -1,28 +1,54 @@
 import * as fs from 'fs';
-import type { PathFindingPoint } from '../../types';
-import { findPathScore } from '../../utils';
 
-const input = fs.readFileSync('input', 'utf8').split('\n');
+const input = fs
+	.readFileSync('input', 'utf8')
+	.split('')
+	.flatMap((n) => parseInt(n, 16).toString(2).padStart(4, '0').split(''));
 
-let board: PathFindingPoint[][] = input.map((line, row) =>
-	line.split('').map((cell, column) => ({ x: column, y: row, score: Number(cell) })),
-);
+const toNumber = (bits: string[]) => parseInt(bits.join(''), 2);
+const shiftBits = (bits: string[], length: number) => bits.splice(0, length);
+const shiftNumber = (bits: string[], length: number) => toNumber(shiftBits(bits, length));
 
-const inc = (row: PathFindingPoint[], i: number, columnCount = -1) =>
-	row.map((p) => ({
-		x: columnCount === -1 ? p.x + row.length * i : p.x,
-		y: columnCount !== -1 ? columnCount * i + p.y : p.y,
-		score: p.score + i > 9 ? p.score + i - 9 : p.score + i,
-	}));
-board = board.map((row) => row.concat(inc(row, 1), inc(row, 2), inc(row, 3), inc(row, 4)));
-const dup = (board: PathFindingPoint[][], i: number) =>
-	board.map((row) => inc(row, i, board.length));
-board = board.concat(dup(board, 1), dup(board, 2), dup(board, 3), dup(board, 4));
+const calculate = () => {
+	shiftNumber(input, 3); // Skip version
+	let typeId = shiftNumber(input, 3);
 
-const result = findPathScore(
-	board,
-	board[0][0],
-	(current) => current.x === board[0].length - 1 && current.y === board.length - 1,
-);
+	if (typeId === 4) {
+		const numberBits = [];
+		while (shiftNumber(input, 1)) {
+			numberBits.push(...shiftBits(input, 4));
+		}
+		numberBits.push(...shiftBits(input, 4));
+		return toNumber(numberBits);
+	}
 
-console.log(result - board[0][0].score);
+	let lengthTypeId = shiftNumber(input, 1);
+	let subPackets: number[] = [];
+
+	if (lengthTypeId === 1) {
+		const packetsCount = shiftNumber(input, 11);
+		for (let i = 0; i < packetsCount; i++) {
+			subPackets.push(calculate());
+		}
+	} else {
+		const packetsLength = shiftNumber(input, 15);
+		const targetLength = input.length - packetsLength;
+		while (input.length !== targetLength) {
+			subPackets.push(calculate());
+		}
+	}
+	return [
+		() => subPackets.reduce((a, b) => a + b, 0),
+		() => subPackets.reduce((a, b) => a * b, 1),
+		() => Math.min(...subPackets),
+		() => Math.max(...subPackets),
+		() => 0, // Unused (typeId=4)
+		() => Number(subPackets[0] > subPackets[1]),
+		() => Number(subPackets[0] < subPackets[1]),
+		() => Number(subPackets[0] === subPackets[1]),
+	][typeId]();
+};
+
+const result = calculate();
+
+console.log(result);
