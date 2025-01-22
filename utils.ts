@@ -1,7 +1,13 @@
 import type { Point, PathFindingPoint } from './types';
-import { ORTHOGONAL_DIRECTIONS } from './constants';
+import { ORTHOGONAL_DIRECTIONS, EIGHT_WAY_DIRECTIONS, NINE_WAY_DIRECTIONS } from './constants';
 
-export const getNeighbors = <T>(input: T[][], arg1: number | Point, arg2?: number): T[] => {
+export const getNeighbors = <T>(
+	input: T[][],
+	arg1: number | Point,
+	arg2?: number,
+	directions = ORTHOGONAL_DIRECTIONS,
+	filterUndefined = true,
+): T[] => {
 	let x: number, y: number;
 	if (typeof arg1 === 'number' && typeof arg2 === 'number') {
 		x = arg1;
@@ -12,9 +18,32 @@ export const getNeighbors = <T>(input: T[][], arg1: number | Point, arg2?: numbe
 	} else {
 		throw new Error('Invalid arguments');
 	}
-	return ORTHOGONAL_DIRECTIONS.map((direction) => input[y + direction.y]?.[x + direction.x]).filter(
-		(n) => n !== undefined,
-	);
+	const result = directions.map((direction) => input[y + direction.y]?.[x + direction.x]);
+	return filterUndefined ? result.filter((n) => n !== undefined) : result;
+};
+
+export const getEightNeighbors = <T>(input: T[][], arg1: number | Point, arg2?: number): T[] => {
+	return getNeighbors(input, arg1, arg2, EIGHT_WAY_DIRECTIONS);
+};
+
+export const getEightNeighborsUnfiltered = <T>(
+	input: T[][],
+	arg1: number | Point,
+	arg2?: number,
+): T[] => {
+	return getNeighbors(input, arg1, arg2, EIGHT_WAY_DIRECTIONS, false);
+};
+
+export const getNightNeighbors = <T>(input: T[][], arg1: number | Point, arg2?: number): T[] => {
+	return getNeighbors(input, arg1, arg2, NINE_WAY_DIRECTIONS);
+};
+
+export const getNightNeighborsUnfiltered = <T>(
+	input: T[][],
+	arg1: number | Point,
+	arg2?: number,
+): T[] => {
+	return getNeighbors(input, arg1, arg2, NINE_WAY_DIRECTIONS, false);
 };
 
 export const getNeighborPositions = <T>(
@@ -53,7 +82,7 @@ export const drawPoints = (points: Point[]) => {
 	drawBoard(board);
 };
 
-export const drawBoard = (board: string[][]) => {
+export const drawBoard = (board: any[][]) => {
 	console.log(board.map((row) => row.join('')).join('\n'));
 };
 
