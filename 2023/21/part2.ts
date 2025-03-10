@@ -23,7 +23,6 @@ for (let i = 0; i < 3; i++) {
 	const queue = [start];
 	for (let j = 0; j < value + rows * i; j++) {
 		const prevQueue = [...queue];
-		// const queueSet = new Set();
 		const queueSet = new Set(queue.map((x) => x.join(',')));
 		queue.length = 0;
 
