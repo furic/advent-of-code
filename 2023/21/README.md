@@ -1,5 +1,4 @@
-\--- Day 21: Step Counter ---
------------------------------
+# Day 21: Step Counter
 
 You manage to catch the [airship](7) right as it's dropping someone else off on their all-expenses-paid trip to Desert Island! It even helpfully drops you off near the [gardener](5) and his massive farm.
 
@@ -37,7 +36,7 @@ The Elf starts at the starting position (`S`) which also counts as a garden plot
     ...........
     
 
-Then, he takes a second step. Since at this point he could be at _either_ tile marked `O`, his second step would allow him to reach any garden plot that is one step north, south, east, or west of _any_ tile that he could have reached after the first step:
+Then, he takes a second step. Since at this point he could be at **either** tile marked `O`, his second step would allow him to reach any garden plot that is one step north, south, east, or west of **any** tile that he could have reached after the first step:
 
     ...........
     .....###.#.
@@ -84,20 +83,19 @@ He will continue like this until his steps for the day have been exhausted. Afte
     ...........
     
 
-In this example, if the Elf's goal was to get exactly `6` more steps today, he could use them to reach any of `_16_` garden plots.
+In this example, if the Elf's goal was to get exactly `6` more steps today, he could use them to reach any of **`16`** garden plots.
 
 However, the Elf _actually needs to get `64` steps today_, and the map he's handed you is much larger than the example map.
 
 Starting from the garden plot marked `S` on your map, _how many garden plots could the Elf reach in exactly `64` steps?_
 
-\--- Part Two ---
------------------
+## Part Two
 
 The Elf seems confused by your answer until he realizes his mistake: he was reading from a list of his favorite numbers that are both perfect squares and perfect cubes, not his step counter.
 
-The _actual_ number of steps he needs to get today is exactly `_26501365_`.
+The **actual** number of steps he needs to get today is exactly **`26501365`**.
 
-He also points out that the garden plots and rocks are set up so that the map _repeats infinitely_ in every direction.
+He also points out that the garden plots and rocks are set up so that the map **repeats infinitely** in every direction.
 
 So, if you were to look one additional map-width or map-height out from the edge of the example map above, you would find that it keeps repeating:
 
@@ -140,12 +138,12 @@ This is just a tiny three-map-by-three-map slice of the inexplicably-infinite fa
 
 Here are the number of reachable garden plots in this new infinite version of the example map for different numbers of steps:
 
-*   In exactly `6` steps, he can still reach `_16_` garden plots.
-*   In exactly `10` steps, he can reach any of `_50_` garden plots.
-*   In exactly `50` steps, he can reach `_1594_` garden plots.
-*   In exactly `100` steps, he can reach `_6536_` garden plots.
-*   In exactly `500` steps, he can reach `_167004_` garden plots.
-*   In exactly `1000` steps, he can reach `_668697_` garden plots.
-*   In exactly `5000` steps, he can reach `_16733044_` garden plots.
+*   In exactly `6` steps, he can still reach **`16`** garden plots.
+*   In exactly `10` steps, he can reach any of **`50`** garden plots.
+*   In exactly `50` steps, he can reach **`1594`** garden plots.
+*   In exactly `100` steps, he can reach **`6536`** garden plots.
+*   In exactly `500` steps, he can reach **`167004`** garden plots.
+*   In exactly `1000` steps, he can reach **`668697`** garden plots.
+*   In exactly `5000` steps, he can reach **`16733044`** garden plots.
 
 However, the step count the Elf needs is much larger! Starting from the garden plot marked `S` on your infinite map, _how many garden plots could the Elf reach in exactly `26501365` steps?_

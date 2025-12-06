@@ -1,5 +1,4 @@
-\--- Day 13: Transparent Origami ---
-------------------------------------
+# Day 13: Transparent Origami
 
 You reach another volcanically active part of the cave. It would be nice if you could do some kind of thermal imaging so you could tell ahead of time which caves are too hot to safely enter.
 
@@ -53,7 +52,7 @@ The first section is a list of dots on the transparent paper. `0,0` represents t
     #.#........
     
 
-Then, there is a list of _fold instructions_. Each instruction indicates a line on the transparent paper and wants you to fold the paper _up_ (for horizontal `y=...` lines) or _left_ (for vertical `x=...` lines). In this example, the first fold instruction is `fold along y=7`, which designates the line formed by all of the positions where `y` is `7` (marked here with `-`):
+Then, there is a list of **fold instructions**. Each instruction indicates a line on the transparent paper and wants you to fold the paper **up** (for horizontal `y=...` lines) or **left** (for vertical `x=...` lines). In this example, the first fold instruction is `fold along y=7`, which designates the line formed by all of the positions where `y` is `7` (marked here with `-`):
 
     ...#..#..#.
     ....#......
@@ -72,7 +71,7 @@ Then, there is a list of _fold instructions_. Each instruction indicates a line 
     #.#........
     
 
-Because this is a horizontal line, fold the bottom half _up_. Some of the dots might end up overlapping after the fold is complete, but dots will never appear exactly on a fold line. The result of doing this fold looks like this:
+Because this is a horizontal line, fold the bottom half **up**. Some of the dots might end up overlapping after the fold is complete, but dots will never appear exactly on a fold line. The result of doing this fold looks like this:
 
     #.##..#..#.
     #...#......
@@ -87,7 +86,7 @@ Now, only `17` dots are visible.
 
 Notice, for example, the two dots in the bottom left corner before the transparent paper is folded; after the fold is complete, those dots appear in the top left corner (at `0,0` and `0,1`). Because the paper is transparent, the dot just below them in the result (at `0,3`) remains visible, as it can be seen through the transparent paper.
 
-Also notice that some dots can end up _overlapping_; in this case, the dots merge together and become a single dot.
+Also notice that some dots can end up **overlapping**; in this case, the dots merge together and become a single dot.
 
 The second fold instruction is `fold along x=5`, which indicates this line:
 
@@ -100,7 +99,7 @@ The second fold instruction is `fold along x=5`, which indicates this line:
     .....|.....
     
 
-Because this is a vertical line, fold _left_:
+Because this is a vertical line, fold **left**:
 
     #####
     #...#
@@ -113,13 +112,12 @@ Because this is a vertical line, fold _left_:
 
 The instructions made a square!
 
-The transparent paper is pretty big, so for now, focus on just completing the first fold. After the first fold in the example above, `_17_` dots are visible - dots that end up overlapping after the fold is completed count as a single dot.
+The transparent paper is pretty big, so for now, focus on just completing the first fold. After the first fold in the example above, **`17`** dots are visible - dots that end up overlapping after the fold is completed count as a single dot.
 
 _How many dots are visible after completing just the first fold instruction on your transparent paper?_
 
-\--- Part Two ---
------------------
+## Part Two
 
-Finish folding the transparent paper according to the instructions. The manual says the code is always _eight capital letters_.
+Finish folding the transparent paper according to the instructions. The manual says the code is always **eight capital letters**.
 
 _What code do you use to activate the infrared thermal imaging camera system?_

@@ -1,13 +1,12 @@
-\--- Day 24: Crossed Wires ---
-------------------------------
+# Day 24: Crossed Wires
 
 You and The Historians arrive at the edge of a [large grove](/2022/day/23) somewhere in the jungle. After the last incident, the Elves installed a small device that monitors the fruit. While The Historians search the grove, one of them asks if you can take a look at the monitoring device; apparently, it's been malfunctioning recently.
 
-The device seems to be trying to produce a number through some boolean logic gates. Each gate has two inputs and one output. The gates all operate on values that are either _true_ (`1`) or _false_ (`0`).
+The device seems to be trying to produce a number through some boolean logic gates. Each gate has two inputs and one output. The gates all operate on values that are either **true** (`1`) or **false** (`0`).
 
-*   `AND` gates output `1` if _both_ inputs are `1`; if either input is `0`, these gates output `0`.
-*   `OR` gates output `1` if _one or both_ inputs is `1`; if both inputs are `0`, these gates output `0`.
-*   `XOR` gates output `1` if the inputs are _different_; if the inputs are the same, these gates output `0`.
+*   `AND` gates output `1` if **both** inputs are `1`; if either input is `0`, these gates output `0`.
+*   `OR` gates output `1` if **one or both** inputs is `1`; if both inputs are `0`, these gates output `0`.
+*   `XOR` gates output `1` if the inputs are **different**; if the inputs are the same, these gates output `0`.
 
 Gates wait until both inputs are received before producing output; wires can carry `0`, `1` or no value at all. There are no loops; once a gate has determined its output, the output will not change until the whole system is reset. Each wire is connected to at most one gate output, but can be connected to many gate inputs.
 
@@ -31,9 +30,9 @@ The second section lists all of the gates and the wires connected to them. For e
 
 In this example, simulating these gates eventually causes `0` to appear on wire `z00`, `0` to appear on wire `z01`, and `1` to appear on wire `z02`.
 
-Ultimately, the system is trying to produce a _number_ by combining the bits on all wires starting with `z`. `z00` is the least significant bit, then `z01`, then `z02`, and so on.
+Ultimately, the system is trying to produce a **number** by combining the bits on all wires starting with `z`. `z00` is the least significant bit, then `z01`, then `z02`, and so on.
 
-In this example, the three output bits form the binary number `100` which is equal to the decimal number `_4_`.
+In this example, the three output bits form the binary number `100` which is equal to the decimal number **`4`**.
 
 Here's a larger example:
 
@@ -126,18 +125,17 @@ After waiting for values on all wires starting with `z`, the wires in this syste
     z12: 0
     
 
-Combining the bits from all wires starting with `z` produces the binary number `0011111101000`. Converting this number to decimal produces `_2024_`.
+Combining the bits from all wires starting with `z` produces the binary number `0011111101000`. Converting this number to decimal produces **`2024`**.
 
 Simulate the system of gates and wires. _What decimal number does it output on the wires starting with `z`?_
 
-\--- Part Two ---
------------------
+## Part Two
 
-After inspecting the monitoring device more closely, you determine that the system you're simulating is trying to _add two binary numbers_.
+After inspecting the monitoring device more closely, you determine that the system you're simulating is trying to **add two binary numbers**.
 
 Specifically, it is treating the bits on wires starting with `x` as one binary number, treating the bits on wires starting with `y` as a second binary number, and then attempting to add those two numbers together. The output of this operation is produced as a binary number on the wires starting with `z`. (In all three cases, wire `00` is the least significant bit, then `01`, then `02`, and so on.)
 
-The initial values for the wires in your puzzle input represent _just one instance_ of a pair of numbers that sum to the wrong value. Ultimately, _any_ two binary numbers provided as input should be handled correctly. That is, for any combination of bits on wires starting with `x` and wires starting with `y`, the sum of the two numbers those bits represent should be produced as a binary number on the wires starting with `z`.
+The initial values for the wires in your puzzle input represent **just one instance** of a pair of numbers that sum to the wrong value. Ultimately, **any** two binary numbers provided as input should be handled correctly. That is, for any combination of bits on wires starting with `x` and wires starting with `y`, the sum of the two numbers those bits represent should be produced as a binary number on the wires starting with `z`.
 
 For example, if you have an addition system with four `x` wires, four `y` wires, and five `z` wires, you should be able to supply any four-bit number on the `x` wires, any four-bit number on the `y` numbers, and eventually find the sum of those two numbers as a five-bit number on the `z` wires. One of the many ways you could provide numbers to such a system would be to pass `11` on the `x` wires (`1011` in binary) and `13` on the `y` wires (`1101` in binary):
 
@@ -162,7 +160,7 @@ If the system were working correctly, then after all gates are finished processi
 
 Unfortunately, your actual system needs to add numbers with many more bits and therefore has many more wires.
 
-Based on forensic analysis of scuff marks and scratches on the device, you can tell that there are exactly _four_ pairs of gates whose output wires have been _swapped_. (A gate can only be in at most one such pair; no gate's output was swapped multiple times.)
+Based on forensic analysis of scuff marks and scratches on the device, you can tell that there are exactly **four** pairs of gates whose output wires have been **swapped**. (A gate can only be in at most one such pair; no gate's output was swapped multiple times.)
 
 For example, the system below is supposed to find the bitwise `AND` of the six-bit number on `x00` through `x05` and the six-bit number on `y00` through `y05` and then write the result as a six-bit number on `z00` through `z05`:
 
@@ -197,8 +195,8 @@ However, in this example, two pairs of gates have had their output wires swapped
     x05 AND y05 -> z05
     
 
-In this example, two pairs of gates have outputs that are involved in a swap. By sorting their output wires' names and joining them with commas, the list of wires involved in swaps is `_z00,z01,z02,z05_`.
+In this example, two pairs of gates have outputs that are involved in a swap. By sorting their output wires' names and joining them with commas, the list of wires involved in swaps is `z00,z01,z02,z05`.
 
-Of course, your actual system is much more complex than this, and the gates that need their outputs swapped could be _anywhere_, not just attached to a wire starting with `z`. If you were to determine that you need to swap output wires `aaa` with `eee`, `ooo` with `z99`, `bbb` with `ccc`, and `aoc` with `z24`, your answer would be `_aaa,aoc,bbb,ccc,eee,ooo,z24,z99_`.
+Of course, your actual system is much more complex than this, and the gates that need their outputs swapped could be **anywhere**, not just attached to a wire starting with `z`. If you were to determine that you need to swap output wires `aaa` with `eee`, `ooo` with `z99`, `bbb` with `ccc`, and `aoc` with `z24`, your answer would be `aaa,aoc,bbb,ccc,eee,ooo,z24,z99`.
 
-Your system of gates and wires has _four_ pairs of gates which need their output wires swapped - _eight_ wires in total. Determine which four pairs of gates need their outputs swapped so that your system correctly performs addition; _what do you get if you sort the names of the eight wires involved in a swap and then join those names with commas?_
+Your system of gates and wires has **four** pairs of gates which need their output wires swapped - **eight** wires in total. Determine which four pairs of gates need their outputs swapped so that your system correctly performs addition; _what do you get if you sort the names of the eight wires involved in a swap and then join those names with commas?_

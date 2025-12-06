@@ -1,11 +1,10 @@
-\--- Day 15: Beacon Exclusion Zone ---
---------------------------------------
+# Day 15: Beacon Exclusion Zone
 
-You feel the ground rumble again as the distress signal leads you to a large network of subterranean tunnels. You don't have time to search them all, but you don't need to: your pack contains a set of deployable _sensors_ that you imagine were originally built to locate lost Elves.
+You feel the ground rumble again as the distress signal leads you to a large network of subterranean tunnels. You don't have time to search them all, but you don't need to: your pack contains a set of deployable **sensors** that you imagine were originally built to locate lost Elves.
 
 The sensors aren't very powerful, but that's okay; your handheld device indicates that you're close enough to the source of the distress signal to use them. You pull the emergency sensor system out of your pack, hit the big button on top, and the sensors zoom off down the tunnels.
 
-Once a sensor finds a spot it thinks will give it a good reading, it attaches itself to a hard surface and begins monitoring for the nearest signal source _beacon_. Sensors and beacons always exist at integer coordinates. Each sensor knows its own position and can _determine the position of a beacon precisely_; however, sensors can only lock on to the one beacon _closest to the sensor_ as measured by the [Manhattan distance](https://en.wikipedia.org/wiki/Taxicab_geometry). (There is never a tie where two beacons are the same distance to a sensor.)
+Once a sensor finds a spot it thinks will give it a good reading, it attaches itself to a hard surface and begins monitoring for the nearest signal source **beacon**. Sensors and beacons always exist at integer coordinates. Each sensor knows its own position and can **determine the position of a beacon precisely**; however, sensors can only lock on to the one beacon **closest to the sensor** as measured by the [Manhattan distance](https://en.wikipedia.org/wiki/Taxicab_geometry). (There is never a tie where two beacons are the same distance to a sensor.)
 
 It doesn't take long for the sensors to report back their positions and closest beacons (your puzzle input). For example:
 
@@ -100,17 +99,16 @@ So, suppose you have an arrangement of beacons and sensors like in the example a
     11 .###S#############.###########.
     
 
-In this example, in the row where `y=10`, there are `_26_` positions where a beacon cannot be present.
+In this example, in the row where `y=10`, there are **`26`** positions where a beacon cannot be present.
 
 Consult the report from the sensors you just deployed. _In the row where `y=2000000`, how many positions cannot contain a beacon?_
 
-\--- Part Two ---
------------------
+## Part Two
 
 Your handheld device indicates that the distress signal is coming from a beacon nearby. The distress beacon is not detected by any sensor, but the distress beacon must have `x` and `y` coordinates each no lower than `0` and no larger than `4000000`.
 
-To isolate the distress beacon's signal, you need to determine its _tuning frequency_, which can be found by multiplying its `x` coordinate by `4000000` and then adding its `y` coordinate.
+To isolate the distress beacon's signal, you need to determine its **tuning frequency**, which can be found by multiplying its `x` coordinate by `4000000` and then adding its `y` coordinate.
 
-In the example above, the search space is smaller: instead, the `x` and `y` coordinates can each be at most `20`. With this reduced search area, there is only a single position that could have a beacon: `x=14, y=11`. The tuning frequency for this distress beacon is `_56000011_`.
+In the example above, the search space is smaller: instead, the `x` and `y` coordinates can each be at most `20`. With this reduced search area, there is only a single position that could have a beacon: `x=14, y=11`. The tuning frequency for this distress beacon is **`56000011`**.
 
 Find the only possible position for the distress beacon. _What is its tuning frequency?_

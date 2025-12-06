@@ -1,5 +1,4 @@
-\--- Day 13: Claw Contraption ---
----------------------------------
+# Day 13: Claw Contraption
 
 Next up: the [lobby](/2020/day/24) of a resort on a tropical island. The Historians take a moment to admire the hexagonal floor tiles before spreading out.
 
@@ -7,9 +6,9 @@ Fortunately, it looks like the resort has a new [arcade](https://en.wikipedia.or
 
 The claw machines here are a little unusual. Instead of a joystick or directional buttons to control the claw, these machines have two buttons labeled `A` and `B`. Worse, you can't just put in a token and play; it costs _3 tokens_ to push the `A` button and _1 token_ to push the `B` button.
 
-With a little experimentation, you figure out that each machine's buttons are configured to move the claw a specific amount to the _right_ (along the `X` axis) and a specific amount _forward_ (along the `Y` axis) each time that button is pressed.
+With a little experimentation, you figure out that each machine's buttons are configured to move the claw a specific amount to the **right** (along the `X` axis) and a specific amount **forward** (along the `Y` axis) each time that button is pressed.
 
-Each machine contains one _prize_; to win the prize, the claw must be positioned _exactly_ above the prize on both the `X` and `Y` axes.
+Each machine contains one **prize**; to win the prize, the claw must be positioned **exactly** above the prize on both the `X` and `Y` axes.
 
 You wonder: what is the smallest number of tokens you would have to spend to win as many prizes as possible? You assemble a list of every machine's button behavior and prize location (your puzzle input). For example:
 
@@ -38,13 +37,13 @@ For now, consider just the first claw machine in the list:
 *   Pushing the `B` button would move the claw `22` units along the `X` axis and `67` units along the `Y` axis.
 *   The prize is located at `X=8400`, `Y=5400`; this means that from the claw's initial position, it would need to move exactly `8400` units along the `X` axis and exactly `5400` units along the `Y` axis to be perfectly aligned with the prize in this machine.
 
-The cheapest way to win the prize is by pushing the `A` button `80` times and the `B` button `40` times. This would line up the claw along the `X` axis (because `80*94 + 40*22 = 8400`) and along the `Y` axis (because `80*34 + 40*67 = 5400`). Doing this would cost `80*3` tokens for the `A` presses and `40*1` for the `B` presses, a total of `_280_` tokens.
+The cheapest way to win the prize is by pushing the `A` button `80` times and the `B` button `40` times. This would line up the claw along the `X` axis (because `80*94 + 40*22 = 8400`) and along the `Y` axis (because `80*34 + 40*67 = 5400`). Doing this would cost `80*3` tokens for the `A` presses and `40*1` for the `B` presses, a total of **`280`** tokens.
 
 For the second and fourth claw machines, there is no combination of A and B presses that will ever win a prize.
 
-For the third claw machine, the cheapest way to win the prize is by pushing the `A` button `38` times and the `B` button `86` times. Doing this would cost a total of `_200_` tokens.
+For the third claw machine, the cheapest way to win the prize is by pushing the `A` button `38` times and the `B` button `86` times. Doing this would cost a total of **`200`** tokens.
 
-So, the most prizes you could possibly win is two; the minimum tokens you would have to spend to win all (two) prizes is `_480_`.
+So, the most prizes you could possibly win is two; the minimum tokens you would have to spend to win all (two) prizes is **`480`**.
 
 You estimate that each button would need to be pressed _no more than `100` times_ to win a prize. How else would someone be expected to play?
 
@@ -52,8 +51,7 @@ Figure out how to win as many prizes as possible. _What is the fewest tokens you
 
 The first half of this puzzle is complete! It provides one gold star: \*
 
-\--- Part Two ---
------------------
+## Part Two
 
 As you go to win the first prize, you discover that the claw is nowhere near where you expected it would be. Due to a unit conversion error in your measurements, the position of every prize is actually `10000000000000` higher on both the `X` and `Y` axis!
 

@@ -1,17 +1,16 @@
-\--- Day 9: Rope Bridge ---
----------------------------
+# Day 9: Rope Bridge
 
 This rope bridge creaks as you walk along it. You aren't sure how old it is, or whether it can even support your weight.
 
 It seems to support the Elves just fine, though. The bridge spans a gorge which was carved out by the massive river far below you.
 
-You step carefully; as you do, the ropes stretch and twist. You decide to distract yourself by modeling rope physics; maybe you can even figure out where _not_ to step.
+You step carefully; as you do, the ropes stretch and twist. You decide to distract yourself by modeling rope physics; maybe you can even figure out where **not** to step.
 
-Consider a rope with a knot at each end; these knots mark the _head_ and the _tail_ of the rope. If the head moves far enough away from the tail, the tail is pulled toward the head.
+Consider a rope with a knot at each end; these knots mark the **head** and the **tail** of the rope. If the head moves far enough away from the tail, the tail is pulled toward the head.
 
-Due to nebulous reasoning involving [Planck lengths](https://en.wikipedia.org/wiki/Planck_units#Planck_length), you should be able to model the positions of the knots on a two-dimensional grid. Then, by following a hypothetical _series of motions_ (your puzzle input) for the head, you can determine how the tail will move.
+Due to nebulous reasoning involving [Planck lengths](https://en.wikipedia.org/wiki/Planck_units#Planck_length), you should be able to model the positions of the knots on a two-dimensional grid. Then, by following a hypothetical **series of motions** (your puzzle input) for the head, you can determine how the tail will move.
 
-Due to the aforementioned Planck lengths, the rope must be quite short; in fact, the head (`H`) and tail (`T`) must _always be touching_ (diagonally adjacent and even overlapping both count as touching):
+Due to the aforementioned Planck lengths, the rope must be quite short; in fact, the head (`H`) and tail (`T`) must **always be touching** (diagonally adjacent and even overlapping both count as touching):
 
     ....
     .TH.
@@ -69,7 +68,7 @@ For example:
     R 2
     
 
-This series of motions moves the head _right_ four steps, then _up_ four steps, then _left_ three steps, then _down_ one step, and so on. After each step, you'll need to update the position of the tail if the step means the head is no longer adjacent to the tail. Visually, these motions occur as follows (`s` marks the starting position as a reference point):
+This series of motions moves the head **right** four steps, then **up** four steps, then **left** three steps, then **down** one step, and so on. After each step, you'll need to update the position of the tail if the step means the head is no longer adjacent to the tail. Visually, these motions occur as follows (`s` marks the starting position as a reference point):
 
     == Initial State ==
     
@@ -240,7 +239,7 @@ This series of motions moves the head _right_ four steps, then _up_ four steps, 
     s.....
     
 
-After simulating the rope, you can count up all of the positions the _tail visited at least once_. In this diagram, `s` again marks the starting position (which the tail also visited) and `#` marks other positions the tail visited:
+After simulating the rope, you can count up all of the positions the **tail visited at least once**. In this diagram, `s` again marks the starting position (which the tail also visited) and `#` marks other positions the tail visited:
 
     ..##..
     ...##.
@@ -249,18 +248,17 @@ After simulating the rope, you can count up all of the positions the _tail visit
     s###..
     
 
-So, there are `_13_` positions the tail visited at least once.
+So, there are **`13`** positions the tail visited at least once.
 
 Simulate your complete hypothetical series of motions. _How many positions does the tail of the rope visit at least once?_
 
-\--- Part Two ---
------------------
+## Part Two
 
 A rope snaps! Suddenly, the river is getting a lot closer than you remember. The bridge is still there, but some of the ropes that broke are now whipping toward you as you fall through the air!
 
 The ropes are moving too quickly to grab; you only have a few seconds to choose how to arch your body to avoid being hit. Fortunately, your simulation can be extended to support longer ropes.
 
-Rather than two knots, you now must simulate a rope consisting of _ten_ knots. One knot is still the head of the rope and moves according to the series of motions. Each knot further down the rope follows the knot in front of it using the same rules as before.
+Rather than two knots, you now must simulate a rope consisting of **ten** knots. One knot is still the head of the rope and moves according to the series of motions. Each knot further down the rope follows the knot in front of it using the same rules as before.
 
 Using the same series of motions as the above example, but with the knots marked `H`, `1`, `2`, ..., `9`, the motions now occur as follows:
 
@@ -433,7 +431,7 @@ Using the same series of motions as the above example, but with the knots marked
     6.....  (6 covers 7, 8, 9, s)
     
 
-Now, you need to keep track of the positions the new tail, `9`, visits. In this example, the tail never moves, and so it only visits `_1_` position. However, _be careful_: more types of motion are possible than before, so you might want to visually compare your simulated rope to the one above.
+Now, you need to keep track of the positions the new tail, `9`, visits. In this example, the tail never moves, and so it only visits **`1`** position. However, **be careful**: more types of motion are possible than before, so you might want to visually compare your simulated rope to the one above.
 
 Here's a larger example:
 
@@ -667,7 +665,7 @@ These motions occur as follows (individual steps are not shown):
     
     
 
-Now, the tail (`9`) visits `_36_` positions (including `s`) at least once:
+Now, the tail (`9`) visits **`36`** positions (including `s`) at least once:
 
     ..........................
     ..........................

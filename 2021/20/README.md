@@ -1,5 +1,4 @@
-\--- Day 20: Trench Map ---
----------------------------
+# Day 20: Trench Map
 
 With the scanners fully deployed, you turn their attention to mapping the floor of the ocean trench.
 
@@ -22,9 +21,9 @@ For example:
     ..###
     
 
-The first section is the _image enhancement algorithm_. It is normally given on a single line, but it has been wrapped to multiple lines in this example for legibility. The second section is the _input image_, a two-dimensional grid of _light pixels_ (`#`) and _dark pixels_ (`.`).
+The first section is the **image enhancement algorithm**. It is normally given on a single line, but it has been wrapped to multiple lines in this example for legibility. The second section is the **input image**, a two-dimensional grid of **light pixels** (`#`) and **dark pixels** (`.`).
 
-The image enhancement algorithm describes how to enhance an image by _simultaneously_ converting all pixels in the input image into an output image. Each pixel of the output image is determined by looking at a 3x3 square of pixels centered on the corresponding input image pixel. So, to determine the value of the pixel at (5,10) in the output image, nine pixels from the input image need to be considered: (4,9), (4,10), (4,11), (5,9), (5,10), (5,11), (6,9), (6,10), and (6,11). These nine input pixels are combined into a single binary number that is used as an index in the _image enhancement algorithm_ string.
+The image enhancement algorithm describes how to enhance an image by **simultaneously** converting all pixels in the input image into an output image. Each pixel of the output image is determined by looking at a 3x3 square of pixels centered on the corresponding input image pixel. So, to determine the value of the pixel at (5,10) in the output image, nine pixels from the input image need to be considered: (4,9), (4,10), (4,11), (5,9), (5,10), (5,11), (6,9), (6,10), and (6,11). These nine input pixels are combined into a single binary number that is used as an index in the **image enhancement algorithm** string.
 
 For example, to determine the output pixel that corresponds to the very middle pixel of the input image, the nine pixels marked by `[...]` would need to be considered:
 
@@ -44,11 +43,11 @@ The image enhancement algorithm string is exactly 512 characters long, enough to
     ..#.#..#####.#.#.#.###.##.....###.##.#..###.####..#####..#....#..#..##..##
     
 
-In the middle of this first group of characters, the character at index 34 can be found: `#`. So, the output pixel in the center of the output image should be `#`, a _light pixel_.
+In the middle of this first group of characters, the character at index 34 can be found: `#`. So, the output pixel in the center of the output image should be `#`, a **light pixel**.
 
 This process can then be repeated to calculate every pixel of the output image.
 
-Through advances in imaging technology, the images being operated on here are _infinite_ in size. _Every_ pixel of the infinite output image needs to be calculated exactly based on the relevant pixels of the input image. The small input image you have is only a small region of the actual infinite input image; the rest of the input image consists of dark pixels (`.`). For the purposes of the example, to save on space, only a portion of the infinite-sized input and output images will be shown.
+Through advances in imaging technology, the images being operated on here are **infinite** in size. **Every** pixel of the infinite output image needs to be calculated exactly based on the relevant pixels of the input image. The small input image you have is only a small region of the actual infinite input image; the rest of the input image consists of dark pixels (`.`). For the purposes of the example, to save on space, only a portion of the infinite-sized input and output images will be shown.
 
 The starting input image, therefore, looks something like this, with more dark pixels (`.`) extending forever in every direction not shown here:
 
@@ -88,7 +87,7 @@ By applying the image enhancement algorithm to every pixel simultaneously, the f
     ...............
     
 
-Through further advances in imaging technology, the above output image can also be used as an input image! This allows it to be enhanced _a second time_:
+Through further advances in imaging technology, the above output image can also be used as an input image! This allows it to be enhanced **a second time**:
 
     ...............
     ...............
@@ -107,15 +106,14 @@ Through further advances in imaging technology, the above output image can also 
     ...............
     
 
-Truly incredible - now the small details are really starting to come through. After enhancing the original input image twice, `_35_` pixels are lit.
+Truly incredible - now the small details are really starting to come through. After enhancing the original input image twice, **`35`** pixels are lit.
 
 Start with the original input image and apply the image enhancement algorithm twice, being careful to account for the infinite size of the images. _How many pixels are lit in the resulting image?_
 
-\--- Part Two ---
------------------
+## Part Two
 
 You still can't quite make out the details in the image. Maybe you just didn't [enhance](https://en.wikipedia.org/wiki/Kernel_(image_processing)) it enough.
 
-If you enhance the starting input image in the above example a total of _50_ times, `_3351_` pixels are lit in the final output image.
+If you enhance the starting input image in the above example a total of _50_ times, **`3351`** pixels are lit in the final output image.
 
 Start again with the original input image and apply the image enhancement algorithm 50 times. _How many pixels are lit in the resulting image?_

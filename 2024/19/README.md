@@ -1,15 +1,14 @@
-\--- Day 19: Linen Layout ---
------------------------------
+# Day 19: Linen Layout
 
 Today, The Historians take you up to the [hot springs](/2023/day/12) on Gear Island! Very [suspiciously](https://www.youtube.com/watch?v=ekL881PJMjI), absolutely nothing goes wrong as they begin their careful search of the vast field of helixes.
 
-Could this _finally_ be your chance to visit the [onsen](https://en.wikipedia.org/wiki/Onsen) next door? Only one way to find out.
+Could this **finally** be your chance to visit the [onsen](https://en.wikipedia.org/wiki/Onsen) next door? Only one way to find out.
 
-After a brief conversation with the reception staff at the onsen front desk, you discover that you don't have the right kind of money to pay the admission fee. However, before you can leave, the staff get your attention. Apparently, they've heard about how you helped at the hot springs, and they're willing to make a deal: if you can simply help them _arrange their towels_, they'll let you in for _free_!
+After a brief conversation with the reception staff at the onsen front desk, you discover that you don't have the right kind of money to pay the admission fee. However, before you can leave, the staff get your attention. Apparently, they've heard about how you helped at the hot springs, and they're willing to make a deal: if you can simply help them **arrange their towels**, they'll let you in for **free**!
 
-Every towel at this onsen is marked with a _pattern of colored stripes_. There are only a few patterns, but for any particular pattern, the staff can get you as many towels with that pattern as you need. Each stripe can be _white_ (`w`), _blue_ (`u`), _black_ (`b`), _red_ (`r`), or _green_ (`g`). So, a towel with the pattern `ggr` would have a green stripe, a green stripe, and then a red stripe, in that order. (You can't reverse a pattern by flipping a towel upside-down, as that would cause the onsen logo to face the wrong way.)
+Every towel at this onsen is marked with a **pattern of colored stripes**. There are only a few patterns, but for any particular pattern, the staff can get you as many towels with that pattern as you need. Each stripe can be **white** (`w`), **blue** (`u`), **black** (`b`), **red** (`r`), or **green** (`g`). So, a towel with the pattern `ggr` would have a green stripe, a green stripe, and then a red stripe, in that order. (You can't reverse a pattern by flipping a towel upside-down, as that would cause the onsen logo to face the wrong way.)
 
-The Official Onsen Branding Expert has produced a list of _designs_ - each a long sequence of stripe colors - that they would like to be able to display. You can use any towels you want, but all of the towels' stripes must exactly match the desired design. So, to display the design `rgrgr`, you could use two `rg` towels and then an `r` towel, an `rgr` towel and then a `gr` towel, or even a single massive `rgrgr` towel (assuming such towel patterns were actually available).
+The Official Onsen Branding Expert has produced a list of **designs** - each a long sequence of stripe colors - that they would like to be able to display. You can use any towels you want, but all of the towels' stripes must exactly match the desired design. So, to display the design `rgrgr`, you could use two `rg` towels and then an `r` towel, an `rgr` towel and then a `gr` towel, or even a single massive `rgrgr` towel (assuming such towel patterns were actually available).
 
 To start, collect together all of the available towel patterns and the list of desired designs (your puzzle input). For example:
 
@@ -35,23 +34,22 @@ Not all designs will be possible with the available towels. In the above example
 *   `bggr` can be made with a `b` towel, two `g` towels, and then an `r` towel.
 *   `gbbr` can be made with a `gb` towel and then a `br` towel.
 *   `rrbgbr` can be made with `r`, `rb`, `g`, and `br`.
-*   `ubwu` is _impossible_.
+*   `ubwu` is **impossible**.
 *   `bwurrg` can be made with `bwu`, `r`, `r`, and `g`.
 *   `brgr` can be made with `br`, `g`, and `r`.
-*   `bbrgwb` is _impossible_.
+*   `bbrgwb` is **impossible**.
 
-In this example, `_6_` of the eight designs are possible with the available towel patterns.
+In this example, **`6`** of the eight designs are possible with the available towel patterns.
 
 To get into the onsen as soon as possible, consult your list of towel patterns and desired designs carefully. _How many designs are possible?_
 
-\--- Part Two ---
------------------
+## Part Two
 
 The staff don't really like some of the towel arrangements you came up with. To avoid an endless cycle of towel rearrangement, maybe you should just give them every possible option.
 
 Here are all of the different ways the above example's designs can be made:
 
-`brwrr` can be made in two different ways: `b`, `r`, `wr`, `r` _or_ `br`, `wr`, `r`.
+`brwrr` can be made in two different ways: `b`, `r`, `wr`, `r` **or** `br`, `wr`, `r`.
 
 `bggr` can only be made with `b`, `g`, `g`, and `r`.
 
@@ -73,10 +71,10 @@ Here are all of the different ways the above example's designs can be made:
 
 `bwurrg` can only be made with `bwu`, `r`, `r`, and `g`.
 
-`brgr` can be made in two different ways: `b`, `r`, `g`, `r` _or_ `br`, `g`, `r`.
+`brgr` can be made in two different ways: `b`, `r`, `g`, `r` **or** `br`, `g`, `r`.
 
 `ubwu` and `bbrgwb` are still impossible.
 
-Adding up all of the ways the towels in this example could be arranged into the desired designs yields `_16_` (`2 + 1 + 4 + 6 + 1 + 2`).
+Adding up all of the ways the towels in this example could be arranged into the desired designs yields **`16`** (`2 + 1 + 4 + 6 + 1 + 2`).
 
 They'll let you into the onsen as soon as you have the list. _What do you get if you add up the number of different ways you could make each design?_

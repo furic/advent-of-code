@@ -1,5 +1,4 @@
-\--- Day 15: Warehouse Woes ---
--------------------------------
+# Day 15: Warehouse Woes
 
 You appear back inside your own mini submarine! Each Historian drives their mini submarine in a different direction; maybe the Chief has his own submarine down here somewhere as well?
 
@@ -7,11 +6,11 @@ You look up to see a vast school of [lanternfish](/2021/day/6) swimming past you
 
 Because lanternfish populations grow rapidly, they need a lot of food, and that food needs to be stored somewhere. That's why these lanternfish have built elaborate warehouse complexes operated by robots!
 
-These lanternfish seem so anxious because they have lost control of the robot that operates one of their most important warehouses! It is currently running amok, pushing around boxes in the warehouse with no regard for lanternfish logistics _or_ lanternfish inventory management strategies.
+These lanternfish seem so anxious because they have lost control of the robot that operates one of their most important warehouses! It is currently running amok, pushing around boxes in the warehouse with no regard for lanternfish logistics **or** lanternfish inventory management strategies.
 
 Right now, none of the lanternfish are brave enough to swim up to an unpredictable robot so they could shut it off. However, if you could anticipate the robot's movements, maybe they could find a safe option.
 
-The lanternfish already have a map of the warehouse and a list of movements the robot will _attempt_ to make (your puzzle input). The problem is that the movements will sometimes fail as boxes are shifted around, making the actual movements of the robot difficult to predict.
+The lanternfish already have a map of the warehouse and a list of movements the robot will **attempt** to make (your puzzle input). The problem is that the movements will sometimes fail as boxes are shifted around, making the actual movements of the robot difficult to predict.
 
 For example:
 
@@ -40,7 +39,7 @@ For example:
 
 As the robot (`@`) attempts to move, if there are any boxes (`O`) in the way, the robot will also attempt to push those boxes. However, if this action would cause the robot or a box to move into a wall (`#`), nothing moves instead, including the robot. The initial positions of these are shown on the map at the top of the document the lanternfish gave you.
 
-The rest of the document describes the _moves_ (`^` for up, `v` for down, `<` for left, `>` for right) that the robot will attempt to make, in order. (The moves form a single giant sequence; they are broken into multiple lines just to make copy-pasting easier. Newlines within the move sequence should be ignored.)
+The rest of the document describes the **moves** (`^` for up, `v` for down, `<` for left, `>` for right) that the robot will attempt to make, in order. (The moves form a single giant sequence; they are broken into multiple lines just to make copy-pasting easier. Newlines within the move sequence should be ignored.)
 
 Here is a smaller example to get started:
 
@@ -233,7 +232,7 @@ The larger example has many more moves; after the robot has finished those moves
     ##########
     
 
-The lanternfish use their own custom Goods Positioning System (GPS for short) to track the locations of the boxes. The _GPS coordinate_ of a box is equal to 100 times its distance from the top edge of the map plus its distance from the left edge of the map. (This process does not stop at wall tiles; measure all the way to the edges of the map.)
+The lanternfish use their own custom Goods Positioning System (GPS for short) to track the locations of the boxes. The **GPS coordinate** of a box is equal to 100 times its distance from the top edge of the map plus its distance from the left edge of the map. (This process does not stop at wall tiles; measure all the way to the edges of the map.)
 
 So, the box shown below has a distance of `1` from the top edge of the map and `4` from the left edge of the map, resulting in a GPS coordinate of `100 * 1 + 4 = 104`.
 
@@ -242,16 +241,15 @@ So, the box shown below has a distance of `1` from the top edge of the map and `
     #......
     
 
-The lanternfish would like to know the _sum of all boxes' GPS coordinates_ after the robot finishes moving. In the larger example, the sum of all boxes' GPS coordinates is `_10092_`. In the smaller example, the sum is `_2028_`.
+The lanternfish would like to know the _sum of all boxes' GPS coordinates_ after the robot finishes moving. In the larger example, the sum of all boxes' GPS coordinates is **`10092`**. In the smaller example, the sum is **`2028`**.
 
 Predict the motion of the robot and boxes in the warehouse. After the robot is finished moving, _what is the sum of all boxes' GPS coordinates?_
 
-\--- Part Two ---
------------------
+## Part Two
 
-The lanternfish use your information to find a safe moment to swim in and turn off the malfunctioning robot! Just as they start preparing a festival in your honor, reports start coming in that a _second_ warehouse's robot is _also_ malfunctioning.
+The lanternfish use your information to find a safe moment to swim in and turn off the malfunctioning robot! Just as they start preparing a festival in your honor, reports start coming in that a **second** warehouse's robot is **also** malfunctioning.
 
-This warehouse's layout is surprisingly similar to the one you just helped. There is one key difference: everything except the robot is _twice as wide_! The robot's list of movements doesn't change.
+This warehouse's layout is surprisingly similar to the one you just helped. There is one key difference: everything except the robot is **twice as wide**! The robot's list of movements doesn't change.
 
 To get the wider warehouse's map, start with your original map and, for each tile, make the following changes:
 
@@ -421,6 +419,6 @@ In the scaled-up version of the larger example from above, after the robot has f
     ####################
     
 
-The sum of these boxes' GPS coordinates is `_9021_`.
+The sum of these boxes' GPS coordinates is **`9021`**.
 
 Predict the motion of the robot and boxes in this new, scaled-up warehouse. _What is the sum of all boxes' final GPS coordinates?_

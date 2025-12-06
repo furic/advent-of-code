@@ -1,5 +1,4 @@
-\--- Day 23: Unstable Diffusion ---
------------------------------------
+# Day 23: Unstable Diffusion
 
 You enter a large crater of gray dirt where the grove is supposed to be. All around you, plants you imagine were expected to be full of fruit are instead withered and broken. A large group of Elves has formed in the middle of the grove.
 
@@ -9,9 +8,9 @@ You look up to see a massive, snow-capped mountain towering above you.
 
 "It's not like there are other active volcanoes here; we've looked everywhere."
 
-"But our scanners show active magma flows; clearly it's going _somewhere_."
+"But our scanners show active magma flows; clearly it's going **somewhere**."
 
-They finally notice you at the edge of the grove, your pack almost overflowing from the random _star_ fruit you've been collecting. Behind you, elephants and monkeys explore the grove, looking concerned. Then, the Elves recognize the ash cloud slowly spreading above your recent detour.
+They finally notice you at the edge of the grove, your pack almost overflowing from the random **star** fruit you've been collecting. Behind you, elephants and monkeys explore the grove, looking concerned. Then, the Elves recognize the ash cloud slowly spreading above your recent detour.
 
 "Why do you--" "How is--" "Did you just--"
 
@@ -32,20 +31,20 @@ For example:
     .#..#..
     
 
-The scan shows Elves `#` and empty ground `.`; outside your scan, more empty ground extends a long way in every direction. The scan is oriented so that _north is up_; orthogonal directions are written N (north), S (south), W (west), and E (east), while diagonal directions are written NE, NW, SE, SW.
+The scan shows Elves `#` and empty ground `.`; outside your scan, more empty ground extends a long way in every direction. The scan is oriented so that **north is up**; orthogonal directions are written N (north), S (south), W (west), and E (east), while diagonal directions are written NE, NW, SE, SW.
 
-The Elves follow a time-consuming process to figure out where they should each go; you can speed up this process considerably. The process consists of some number of _rounds_ during which Elves alternate between considering where to move and actually moving.
+The Elves follow a time-consuming process to figure out where they should each go; you can speed up this process considerably. The process consists of some number of **rounds** during which Elves alternate between considering where to move and actually moving.
 
-During the _first half_ of each round, each Elf considers the eight positions adjacent to themself. If no other Elves are in one of those eight positions, the Elf _does not do anything_ during this round. Otherwise, the Elf looks in each of four directions in the following order and _proposes_ moving one step in the _first valid direction_:
+During the **first half** of each round, each Elf considers the eight positions adjacent to themself. If no other Elves are in one of those eight positions, the Elf **does not do anything** during this round. Otherwise, the Elf looks in each of four directions in the following order and **proposes** moving one step in the **first valid direction**:
 
-*   If there is no Elf in the N, NE, or NW adjacent positions, the Elf proposes moving _north_ one step.
-*   If there is no Elf in the S, SE, or SW adjacent positions, the Elf proposes moving _south_ one step.
-*   If there is no Elf in the W, NW, or SW adjacent positions, the Elf proposes moving _west_ one step.
-*   If there is no Elf in the E, NE, or SE adjacent positions, the Elf proposes moving _east_ one step.
+*   If there is no Elf in the N, NE, or NW adjacent positions, the Elf proposes moving **north** one step.
+*   If there is no Elf in the S, SE, or SW adjacent positions, the Elf proposes moving **south** one step.
+*   If there is no Elf in the W, NW, or SW adjacent positions, the Elf proposes moving **west** one step.
+*   If there is no Elf in the E, NE, or SE adjacent positions, the Elf proposes moving **east** one step.
 
-After each Elf has had a chance to propose a move, the _second half_ of the round can begin. Simultaneously, each Elf moves to their proposed destination tile if they were the _only_ Elf to propose moving to that position. If two or more Elves propose moving to the same position, _none_ of those Elves move.
+After each Elf has had a chance to propose a move, the **second half** of the round can begin. Simultaneously, each Elf moves to their proposed destination tile if they were the **only** Elf to propose moving to that position. If two or more Elves propose moving to the same position, **none** of those Elves move.
 
-Finally, at the end of the round, the _first direction_ the Elves considered is moved to the end of the list of directions. For example, during the second round, the Elves would try proposing a move to the south first, then west, then east, then north. On the third round, the Elves would first consider west, then east, then north, then south.
+Finally, at the end of the round, the **first direction** the Elves considered is moved to the end of the list of directions. For example, during the second round, the Elves would try proposing a move to the south first, then west, then east, then north. On the third round, the Elves would first consider west, then east, then north, then south.
 
 As a smaller example, consider just these five Elves:
 
@@ -67,7 +66,7 @@ The northernmost two Elves and southernmost two Elves all propose moving north, 
     .....
     
 
-Next, the northernmost two Elves and the southernmost Elf all propose moving south. Of the remaining middle two Elves, the west one cannot move south and proposes moving west, while the east one cannot move south _or_ west and proposes moving east. All five Elves succeed in moving to their proposed positions:
+Next, the northernmost two Elves and the southernmost Elf all propose moving south. Of the remaining middle two Elves, the west one cannot move south and proposes moving west, while the east one cannot move south **or** west and proposes moving east. All five Elves succeed in moving to their proposed positions:
 
     .....
     ..##.
@@ -208,16 +207,15 @@ To make sure they're on the right track, the Elves like to check after round 10 
     ...#..#..#..
     
 
-In this region, the number of empty ground tiles is `_110_`.
+In this region, the number of empty ground tiles is **`110`**.
 
 Simulate the Elves' process and find the smallest rectangle that contains the Elves after 10 rounds. _How many empty ground tiles does that rectangle contain?_
 
-\--- Part Two ---
------------------
+## Part Two
 
 It seems you're on the right track. Finish simulating the process and figure out where the Elves need to go. How many rounds did you save them?
 
-In the example above, the _first round where no Elf moved_ was round `_20_`:
+In the example above, the **first round where no Elf moved** was round **`20`**:
 
     .......#......
     ....#......#..

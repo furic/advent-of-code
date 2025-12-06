@@ -1,9 +1,8 @@
-\--- Day 18: Lavaduct Lagoon ---
---------------------------------
+# Day 18: Lavaduct Lagoon
 
-Thanks to your efforts, the machine parts factory is one of the first factories up and running since the lavafall came back. However, to catch up with the large backlog of parts requests, the factory will also need a _large supply of lava_ for a while; the Elves have already started creating a large lagoon nearby for this purpose.
+Thanks to your efforts, the machine parts factory is one of the first factories up and running since the lavafall came back. However, to catch up with the large backlog of parts requests, the factory will also need a **large supply of lava** for a while; the Elves have already started creating a large lagoon nearby for this purpose.
 
-However, they aren't sure the lagoon will be big enough; they've asked you to take a look at the _dig plan_ (your puzzle input). For example:
+However, they aren't sure the lagoon will be big enough; they've asked you to take a look at the **dig plan** (your puzzle input). For example:
 
     R 6 (#70c710)
     D 5 (#0dc571)
@@ -21,9 +20,9 @@ However, they aren't sure the lagoon will be big enough; they've asked you to ta
     U 2 (#7a21e3)
     
 
-The digger starts in a 1 meter cube hole in the ground. They then dig the specified number of meters _up_ (`U`), _down_ (`D`), _left_ (`L`), or _right_ (`R`), clearing full 1 meter cubes as they go. The directions are given as seen from above, so if "up" were north, then "right" would be east, and so on. Each trench is also listed with _the color that the edge of the trench should be painted_ as an [RGB hexadecimal color code](https://en.wikipedia.org/wiki/RGB_color_model#Numeric_representations).
+The digger starts in a 1 meter cube hole in the ground. They then dig the specified number of meters **up** (`U`), **down** (`D`), **left** (`L`), or **right** (`R`), clearing full 1 meter cubes as they go. The directions are given as seen from above, so if "up" were north, then "right" would be east, and so on. Each trench is also listed with **the color that the edge of the trench should be painted** as an [RGB hexadecimal color code](https://en.wikipedia.org/wiki/RGB**color**model#Numeric_representations).
 
-When viewed from above, the above example dig plan would result in the following loop of _trench_ (`#`) having been dug out from otherwise _ground-level terrain_ (`.`):
+When viewed from above, the above example dig plan would result in the following loop of **trench** (`#`) having been dug out from otherwise _ground-level terrain_ (`.`):
 
     #######
     #.....#
@@ -37,7 +36,7 @@ When viewed from above, the above example dig plan would result in the following
     .######
     
 
-At this point, the trench could contain 38 cubic meters of lava. However, this is just the edge of the lagoon; the next step is to _dig out the interior_ so that it is one meter deep as well:
+At this point, the trench could contain 38 cubic meters of lava. However, this is just the edge of the lagoon; the next step is to **dig out the interior** so that it is one meter deep as well:
 
     #######
     #######
@@ -51,18 +50,17 @@ At this point, the trench could contain 38 cubic meters of lava. However, this i
     .######
     
 
-Now, the lagoon can contain a much more respectable `_62_` cubic meters of lava. While the interior is dug out, the edges are also painted according to the color codes in the dig plan.
+Now, the lagoon can contain a much more respectable **`62`** cubic meters of lava. While the interior is dug out, the edges are also painted according to the color codes in the dig plan.
 
 The Elves are concerned the lagoon won't be large enough; if they follow their dig plan, _how many cubic meters of lava could it hold?_
 
-\--- Part Two ---
------------------
+## Part Two
 
-The Elves were right to be concerned; the planned lagoon would be _much too small_.
+The Elves were right to be concerned; the planned lagoon would be **much too small**.
 
-After a few minutes, someone realizes what happened; someone _swapped the color and instruction parameters_ when producing the dig plan. They don't have time to fix the bug; one of them asks if you can _extract the correct instructions_ from the hexadecimal codes.
+After a few minutes, someone realizes what happened; someone **swapped the color and instruction parameters** when producing the dig plan. They don't have time to fix the bug; one of them asks if you can **extract the correct instructions** from the hexadecimal codes.
 
-Each hexadecimal code is _six hexadecimal digits_ long. The first five hexadecimal digits encode the _distance in meters_ as a five-digit hexadecimal number. The last hexadecimal digit encodes the _direction to dig_: `0` means `R`, `1` means `D`, `2` means `L`, and `3` means `U`.
+Each hexadecimal code is **six hexadecimal digits** long. The first five hexadecimal digits encode the **distance in meters** as a five-digit hexadecimal number. The last hexadecimal digit encodes the **direction to dig**: `0` means `R`, `1` means `D`, `2` means `L`, and `3` means `U`.
 
 So, in the above example, the hexadecimal codes can be converted into the true instructions:
 
@@ -81,6 +79,6 @@ So, in the above example, the hexadecimal codes can be converted into the true i
 *   `#015232` = `L 5411`
 *   `#7a21e3` = `U 500254`
 
-Digging out this loop and its interior produces a lagoon that can hold an impressive `_952408144115_` cubic meters of lava.
+Digging out this loop and its interior produces a lagoon that can hold an impressive **`952408144115`** cubic meters of lava.
 
 Convert the hexadecimal color codes into the correct instructions; if the Elves follow this new dig plan, _how many cubic meters of lava could the lagoon hold?_

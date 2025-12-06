@@ -1,9 +1,8 @@
-\--- Day 18: Snailfish ---
---------------------------
+# Day 18: Snailfish
 
-You descend into the ocean trench and encounter some [snailfish](https://en.wikipedia.org/wiki/Snailfish). They say they saw the sleigh keys! They'll even tell you which direction the keys went if you help one of the smaller snailfish with his _math homework_.
+You descend into the ocean trench and encounter some [snailfish](https://en.wikipedia.org/wiki/Snailfish). They say they saw the sleigh keys! They'll even tell you which direction the keys went if you help one of the smaller snailfish with his **math homework**.
 
-Snailfish numbers aren't like regular numbers. Instead, every snailfish number is a _pair_ - an ordered list of two elements. Each element of the pair can be either a regular number or another pair.
+Snailfish numbers aren't like regular numbers. Instead, every snailfish number is a **pair** - an ordered list of two elements. Each element of the pair can be either a regular number or another pair.
 
 Pairs are written as `[x,y]`, where `x` and `y` are the elements within the pair. Here are some example snailfish numbers, one snailfish number per line:
 
@@ -16,20 +15,20 @@ Pairs are written as `[x,y]`, where `x` and `y` are the elements within the pair
     [[[[1,3],[5,3]],[[1,3],[8,7]]],[[[4,9],[6,9]],[[8,2],[7,3]]]]
     
 
-This snailfish homework is about _addition_. To add two snailfish numbers, form a pair from the left and right parameters of the addition operator. For example, `[1,2]` + `[[3,4],5]` becomes `[[1,2],[[3,4],5]]`.
+This snailfish homework is about **addition**. To add two snailfish numbers, form a pair from the left and right parameters of the addition operator. For example, `[1,2]` + `[[3,4],5]` becomes `[[1,2],[[3,4],5]]`.
 
-There's only one problem: _snailfish numbers must always be reduced_, and the process of adding two snailfish numbers can result in snailfish numbers that need to be reduced.
+There's only one problem: **snailfish numbers must always be reduced**, and the process of adding two snailfish numbers can result in snailfish numbers that need to be reduced.
 
-To _reduce a snailfish number_, you must repeatedly do the first action in this list that applies to the snailfish number:
+To **reduce a snailfish number**, you must repeatedly do the first action in this list that applies to the snailfish number:
 
-*   If any pair is _nested inside four pairs_, the leftmost such pair _explodes_.
-*   If any regular number is _10 or greater_, the leftmost such regular number _splits_.
+*   If any pair is **nested inside four pairs**, the leftmost such pair **explodes**.
+*   If any regular number is _10 or greater_, the leftmost such regular number **splits**.
 
 Once no action in the above list applies, the snailfish number is reduced.
 
-During reduction, at most one action applies, after which the process returns to the top of the list of actions. For example, if _split_ produces a pair that meets the _explode_ criteria, that pair _explodes_ before other _splits_ occur.
+During reduction, at most one action applies, after which the process returns to the top of the list of actions. For example, if **split** produces a pair that meets the **explode** criteria, that pair **explodes** before other **splits** occur.
 
-To _explode_ a pair, the pair's left value is added to the first regular number to the left of the exploding pair (if any), and the pair's right value is added to the first regular number to the right of the exploding pair (if any). Exploding pairs will always consist of two regular numbers. Then, the entire exploding pair is replaced with the regular number `0`.
+To **explode** a pair, the pair's left value is added to the first regular number to the left of the exploding pair (if any), and the pair's right value is added to the first regular number to the right of the exploding pair (if any). Exploding pairs will always consist of two regular numbers. Then, the entire exploding pair is replaced with the regular number `0`.
 
 Here are some examples of a single explode action:
 
@@ -39,7 +38,7 @@ Here are some examples of a single explode action:
 *   `[[3,[2,[1,_[7,3]_]]],[6,[5,[4,[3,2]]]]]` becomes `[[3,[2,[_8_,_0_]]],[_9_,[5,[4,[3,2]]]]]` (the pair `[3,2]` is unaffected because the pair `[7,3]` is further to the left; `[3,2]` would explode on the next action).
 *   `[[3,[2,[8,0]]],[9,[5,[4,_[3,2]_]]]]` becomes `[[3,[2,[8,0]]],[9,[5,[_7_,_0_]]]]`.
 
-To _split_ a regular number, replace it with a pair; the left element of the pair should be the regular number divided by two and rounded _down_, while the right element of the pair should be the regular number divided by two and rounded _up_. For example, `10` becomes `[5,5]`, `11` becomes `[5,6]`, `12` becomes `[6,6]`, and so on.
+To **split** a regular number, replace it with a pair; the left element of the pair should be the regular number divided by two and rounded **down**, while the right element of the pair should be the regular number divided by two and rounded **up**. For example, `10` becomes `[5,5]`, `11` becomes `[5,6]`, `12` becomes `[6,6]`, and so on.
 
 Here is the process of finding the reduced result of `[[[[4,3],4],4],[7,[[8,4],9]]]` + `[1,1]`:
 
@@ -53,7 +52,7 @@ Here is the process of finding the reduced result of `[[[[4,3],4],4],[7,[[8,4],9
 
 Once no reduce actions apply, the snailfish number that remains is the actual result of the addition operation: `[[[[0,7],4],[[7,8],[6,0]]],[8,1]]`.
 
-The homework assignment involves adding up a _list of snailfish numbers_ (your puzzle input). The snailfish numbers are each listed on a separate line. Add the first snailfish number and the second, then add that result and the third, then add that result and the fourth, and so on until all numbers in the list have been used once.
+The homework assignment involves adding up a **list of snailfish numbers** (your puzzle input). The snailfish numbers are each listed on a separate line. Add the first snailfish number and the second, then add that result and the third, then add that result and the fourth, and so on until all numbers in the list have been used once.
 
 For example, the final sum of this list is `[[[[1,1],[2,2]],[3,3]],[4,4]]`:
 
@@ -135,18 +134,18 @@ The final sum `[[[[8,7],[7,7]],[[8,6],[7,7]]],[[[0,7],[6,6]],[8,7]]]` is found a
     = [[[[8,7],[7,7]],[[8,6],[7,7]]],[[[0,7],[6,6]],[8,7]]]
     
 
-To check whether it's the right answer, the snailfish teacher only checks the _magnitude_ of the final sum. The magnitude of a pair is 3 times the magnitude of its left element plus 2 times the magnitude of its right element. The magnitude of a regular number is just that number.
+To check whether it's the right answer, the snailfish teacher only checks the **magnitude** of the final sum. The magnitude of a pair is 3 times the magnitude of its left element plus 2 times the magnitude of its right element. The magnitude of a regular number is just that number.
 
-For example, the magnitude of `[9,1]` is `3*9 + 2*1 = _29_`; the magnitude of `[1,9]` is `3*1 + 2*9 = _21_`. Magnitude calculations are recursive: the magnitude of `[[9,1],[1,9]]` is `3*29 + 2*21 = _129_`.
+For example, the magnitude of `[9,1]` is `3*9 + 2*1 = _29`; the magnitude of `[1,9]` is `3*1 + 2*9 = _21`. Magnitude calculations are recursive: the magnitude of `[[9,1],[1,9]]` is `3*29 + 2*21 = _129`.
 
 Here are a few more magnitude examples:
 
-*   `[[1,2],[[3,4],5]]` becomes `_143_`.
-*   `[[[[0,7],4],[[7,8],[6,0]]],[8,1]]` becomes `_1384_`.
-*   `[[[[1,1],[2,2]],[3,3]],[4,4]]` becomes `_445_`.
-*   `[[[[3,0],[5,3]],[4,4]],[5,5]]` becomes `_791_`.
-*   `[[[[5,0],[7,4]],[5,5]],[6,6]]` becomes `_1137_`.
-*   `[[[[8,7],[7,7]],[[8,6],[7,7]]],[[[0,7],[6,6]],[8,7]]]` becomes `_3488_`.
+*   `[[1,2],[[3,4],5]]` becomes **`143`**.
+*   `[[[[0,7],4],[[7,8],[6,0]]],[8,1]]` becomes **`1384`**.
+*   `[[[[1,1],[2,2]],[3,3]],[4,4]]` becomes **`445`**.
+*   `[[[[3,0],[5,3]],[4,4]],[5,5]]` becomes **`791`**.
+*   `[[[[5,0],[7,4]],[5,5]],[6,6]]` becomes **`1137`**.
+*   `[[[[8,7],[7,7]],[[8,6],[7,7]]],[[[0,7],[6,6]],[8,7]]]` becomes **`3488`**.
 
 So, given this example homework assignment:
 
@@ -166,12 +165,11 @@ The final sum is:
 
     [[[[6,6],[7,6]],[[7,7],[7,0]]],[[[7,7],[7,7]],[[7,8],[9,9]]]]
 
-The magnitude of this final sum is `_4140_`.
+The magnitude of this final sum is **`4140`**.
 
 Add up all of the snailfish numbers from the homework assignment in the order they appear. _What is the magnitude of the final sum?_
 
-\--- Part Two ---
------------------
+## Part Two
 
 You notice a second question on the back of the homework assignment:
 
@@ -193,6 +191,6 @@ Again considering the last example homework assignment above:
     [[[[5,2],5],[8,[3,7]]],[[5,[7,5]],[4,4]]]
     
 
-The largest magnitude of the sum of any two snailfish numbers in this list is `_3993_`. This is the magnitude of `[[2,[[7,7],7]],[[5,8],[[9,3],[0,2]]]]` + `[[[0,[5,8]],[[1,7],[9,6]]],[[4,[1,2]],[[1,4],2]]]`, which reduces to `[[[[7,8],[6,6]],[[6,0],[7,7]]],[[[7,8],[8,8]],[[7,9],[0,6]]]]`.
+The largest magnitude of the sum of any two snailfish numbers in this list is **`3993`**. This is the magnitude of `[[2,[[7,7],7]],[[5,8],[[9,3],[0,2]]]]` + `[[[0,[5,8]],[[1,7],[9,6]]],[[4,[1,2]],[[1,4],2]]]`, which reduces to `[[[[7,8],[6,6]],[[6,0],[7,7]]],[[[7,8],[8,8]],[[7,9],[0,6]]]]`.
 
 _What is the largest magnitude of any sum of two different snailfish numbers from the homework assignment?_

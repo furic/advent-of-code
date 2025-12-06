@@ -1,11 +1,10 @@
-\--- Day 22: Reactor Reboot ---
--------------------------------
+# Day 22: Reactor Reboot
 
 Operating at these extreme ocean depths has overloaded the submarine's reactor; it needs to be rebooted.
 
-The reactor core is made up of a large 3-dimensional grid made up entirely of cubes, one cube per integer 3-dimensional coordinate (`x,y,z`). Each cube can be either _on_ or _off_; at the start of the reboot process, they are all _off_. (Could it be an old model of a reactor you've seen [before](/2020/day/17)?)
+The reactor core is made up of a large 3-dimensional grid made up entirely of cubes, one cube per integer 3-dimensional coordinate (`x,y,z`). Each cube can be either **on** or **off**; at the start of the reboot process, they are all **off**. (Could it be an old model of a reactor you've seen [before](/2020/day/17)?)
 
-To reboot the reactor, you just need to set all of the cubes to either _on_ or _off_ by following a list of _reboot steps_ (your puzzle input). Each step specifies a [cuboid](https://en.wikipedia.org/wiki/Cuboid) (the set of all cubes that have coordinates which fall within ranges for `x`, `y`, and `z`) and whether to turn all of the cubes in that cuboid _on_ or _off_.
+To reboot the reactor, you just need to set all of the cubes to either **on** or **off** by following a list of **reboot steps** (your puzzle input). Each step specifies a [cuboid](https://en.wikipedia.org/wiki/Cuboid) (the set of all cubes that have coordinates which fall within ranges for `x`, `y`, and `z`) and whether to turn all of the cubes in that cuboid **on** or **off**.
 
 For example, given these reboot steps:
 
@@ -15,7 +14,7 @@ For example, given these reboot steps:
     on x=10..10,y=10..10,z=10..10
     
 
-The first step (`on x=10..12,y=10..12,z=10..12`) turns _on_ a 3x3x3 cuboid consisting of 27 cubes:
+The first step (`on x=10..12,y=10..12,z=10..12`) turns **on** a 3x3x3 cuboid consisting of 27 cubes:
 
 *   `10,10,10`
 *   `10,10,11`
@@ -45,7 +44,7 @@ The first step (`on x=10..12,y=10..12,z=10..12`) turns _on_ a 3x3x3 cuboid consi
 *   `12,12,11`
 *   `12,12,12`
 
-The second step (`on x=11..13,y=11..13,z=11..13`) turns _on_ a 3x3x3 cuboid that overlaps with the first. As a result, only 19 additional cubes turn on; the rest are already on from the previous step:
+The second step (`on x=11..13,y=11..13,z=11..13`) turns **on** a 3x3x3 cuboid that overlaps with the first. As a result, only 19 additional cubes turn on; the rest are already on from the previous step:
 
 *   `11,11,13`
 *   `11,12,13`
@@ -67,7 +66,7 @@ The second step (`on x=11..13,y=11..13,z=11..13`) turns _on_ a 3x3x3 cuboid that
 *   `13,13,12`
 *   `13,13,13`
 
-The third step (`off x=9..11,y=9..11,z=9..11`) turns _off_ a 3x3x3 cuboid that overlaps partially with some cubes that are on, ultimately turning off 8 cubes:
+The third step (`off x=9..11,y=9..11,z=9..11`) turns **off** a 3x3x3 cuboid that overlaps partially with some cubes that are on, ultimately turning off 8 cubes:
 
 *   `10,10,10`
 *   `10,10,11`
@@ -78,7 +77,7 @@ The third step (`off x=9..11,y=9..11,z=9..11`) turns _off_ a 3x3x3 cuboid that o
 *   `11,11,10`
 *   `11,11,11`
 
-The final step (`on x=10..10,y=10..10,z=10..10`) turns _on_ a single cube, `10,10,10`. After this last step, `_39_` cubes are _on_.
+The final step (`on x=10..10,y=10..10,z=10..10`) turns **on** a single cube, `10,10,10`. After this last step, **`39`** cubes are **on**.
 
 The initialization procedure only uses cubes that have `x`, `y`, and `z` positions of at least `-50` and at most `50`. For now, ignore cubes outside this region.
 
@@ -108,16 +107,15 @@ Here is a larger example:
     on x=967..23432,y=45373..81175,z=27513..53682
     
 
-The last two steps are fully outside the initialization procedure area; all other steps are fully within it. After executing these steps in the initialization procedure region, `_590784_` cubes are _on_.
+The last two steps are fully outside the initialization procedure area; all other steps are fully within it. After executing these steps in the initialization procedure region, **`590784`** cubes are **on**.
 
 Execute the reboot steps. Afterward, considering only cubes in the region `x=-50..50,y=-50..50,z=-50..50`, _how many cubes are on?_
 
-\--- Part Two ---
------------------
+## Part Two
 
 Now that the initialization procedure is complete, you can reboot the reactor.
 
-Starting with all cubes _off_, run all of the _reboot steps_ for all cubes in the reactor.
+Starting with all cubes **off**, run all of the **reboot steps** for all cubes in the reactor.
 
 Consider the following reboot steps:
 
@@ -183,6 +181,6 @@ Consider the following reboot steps:
     off x=-93533..-4276,y=-16170..68771,z=-104985..-24507
     
 
-After running the above reboot steps, `_2758514936282235_` cubes are _on_. (Just for fun, `474140` of those are also in the initialization procedure region.)
+After running the above reboot steps, **`2758514936282235`** cubes are **on**. (Just for fun, `474140` of those are also in the initialization procedure region.)
 
-Starting again with all cubes _off_, execute all reboot steps. Afterward, considering all cubes, _how many cubes are on?_
+Starting again with all cubes **off**, execute all reboot steps. Afterward, considering all cubes, _how many cubes are on?_

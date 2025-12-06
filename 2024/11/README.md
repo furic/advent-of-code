@@ -1,21 +1,20 @@
-\--- Day 11: Plutonian Pebbles ---
-----------------------------------
+# Day 11: Plutonian Pebbles
 
 The ancient civilization on [Pluto](/2019/day/20) was known for its ability to manipulate spacetime, and while The Historians explore their infinite corridors, you've noticed a strange set of physics-defying stones.
 
-At first glance, they seem like normal stones: they're arranged in a perfectly _straight line_, and each stone has a _number_ engraved on it.
+At first glance, they seem like normal stones: they're arranged in a perfectly **straight line**, and each stone has a **number** engraved on it.
 
-The strange part is that every time you blink, the stones _change_.
+The strange part is that every time you blink, the stones **change**.
 
-Sometimes, the number engraved on a stone changes. Other times, a stone might _split in two_, causing all the other stones to shift over a bit to make room in their perfectly straight line.
+Sometimes, the number engraved on a stone changes. Other times, a stone might **split in two**, causing all the other stones to shift over a bit to make room in their perfectly straight line.
 
-As you observe them for a while, you find that the stones have a consistent behavior. Every time you blink, the stones each _simultaneously_ change according to the _first applicable rule_ in this list:
+As you observe them for a while, you find that the stones have a consistent behavior. Every time you blink, the stones each **simultaneously** change according to the **first applicable rule** in this list:
 
 *   If the stone is engraved with the number `0`, it is replaced by a stone engraved with the number `1`.
-*   If the stone is engraved with a number that has an _even_ number of digits, it is replaced by _two stones_. The left half of the digits are engraved on the new left stone, and the right half of the digits are engraved on the new right stone. (The new numbers don't keep extra leading zeroes: `1000` would become stones `10` and `0`.)
+*   If the stone is engraved with a number that has an **even** number of digits, it is replaced by **two stones**. The left half of the digits are engraved on the new left stone, and the right half of the digits are engraved on the new right stone. (The new numbers don't keep extra leading zeroes: `1000` would become stones `10` and `0`.)
 *   If none of the other rules apply, the stone is replaced by a new stone; the old stone's number _multiplied by 2024_ is engraved on the new stone.
 
-No matter how the stones change, their _order is preserved_, and they stay on their perfectly straight line.
+No matter how the stones change, their **order is preserved**, and they stay on their perfectly straight line.
 
 How will the stones evolve if you keep blinking at them? You take a note of the number engraved on each stone in the line (your puzzle input).
 
@@ -53,13 +52,12 @@ Here is a longer example:
     2097446912 14168 4048 2 0 2 4 40 48 2024 40 48 80 96 2 8 6 7 6 0 3 2
     
 
-In this example, after blinking six times, you would have `22` stones. After blinking 25 times, you would have `_55312_` stones!
+In this example, after blinking six times, you would have `22` stones. After blinking 25 times, you would have **`55312`** stones!
 
 Consider the arrangement of stones in front of you. _How many stones will you have after blinking 25 times?_
 
-\--- Part Two ---
------------------
+## Part Two
 
-The Historians sure are taking a long time. To be fair, the infinite corridors _are_ very large.
+The Historians sure are taking a long time. To be fair, the infinite corridors **are** very large.
 
 _How many stones would you have after blinking a total of 75 times?_

@@ -1,13 +1,12 @@
-\--- Day 14: Restroom Redoubt ---
----------------------------------
+# Day 14: Restroom Redoubt
 
 One of The Historians needs to use the bathroom; fortunately, you know there's a bathroom near an unvisited location on their list, and so you're all quickly teleported directly to the lobby of Easter Bunny Headquarters.
 
-Unfortunately, EBHQ seems to have "improved" bathroom security _again_ after your last [visit](/2016/day/2). The area outside the bathroom is swarming with robots!
+Unfortunately, EBHQ seems to have "improved" bathroom security **again** after your last [visit](/2016/day/2). The area outside the bathroom is swarming with robots!
 
-To get The Historian safely to the bathroom, you'll need a way to predict where the robots will be in the future. Fortunately, they all seem to be moving on the tile floor in predictable _straight lines_.
+To get The Historian safely to the bathroom, you'll need a way to predict where the robots will be in the future. Fortunately, they all seem to be moving on the tile floor in predictable **straight lines**.
 
-You make a list (your puzzle input) of all of the robots' current _positions_ (`p`) and _velocities_ (`v`), one robot per line. For example:
+You make a list (your puzzle input) of all of the robots' current **positions** (`p`) and **velocities** (`v`), one robot per line. For example:
 
     p=0,4 v=3,-3
     p=6,3 v=-1,-3
@@ -25,7 +24,7 @@ You make a list (your puzzle input) of all of the robots' current _positions_ (`
 
 Each robot's position is given as `p=x,y` where `x` represents the number of tiles the robot is from the left wall and `y` represents the number of tiles from the top wall (when viewed from above). So, a position of `p=0,0` means the robot is all the way in the top-left corner.
 
-Each robot's velocity is given as `v=x,y` where `x` and `y` are given in _tiles per second_. Positive `x` means the robot is moving to the _right_, and positive `y` means the robot is moving _down_. So, a velocity of `v=1,-2` means that each second, the robot moves `1` tile to the right and `2` tiles up.
+Each robot's velocity is given as `v=x,y` where `x` and `y` are given in **tiles per second**. Positive `x` means the robot is moving to the **right**, and positive `y` means the robot is moving **down**. So, a velocity of `v=1,-2` means that each second, the robot moves `1` tile to the right and `2` tiles up.
 
 The robots outside the actual bathroom are in a space which is `101` tiles wide and `103` tiles tall (when viewed from above). However, in this example, the robots are in a space which is only `11` tiles wide and `7` tiles tall.
 
@@ -40,7 +39,7 @@ The robots are good at navigating over/under each other (due to a combination of
     .......1...
     
 
-These robots have a unique feature for maximum bathroom security: they can _teleport_. When a robot would run into an edge of the space they're in, they instead _teleport to the other side_, effectively wrapping around the edges. Here is what robot `p=2,4 v=2,-3` does for the first few seconds:
+These robots have a unique feature for maximum bathroom security: they can **teleport**. When a robot would run into an edge of the space they're in, they instead **teleport to the other side**, effectively wrapping around the edges. Here is what robot `p=2,4 v=2,-3` does for the first few seconds:
 
     Initial state:
     ...........
@@ -110,7 +109,7 @@ In the above example, the number of robots on each tile after 100 seconds has el
     .1....1....
     
 
-To determine the safest area, count the _number of robots in each quadrant_ after 100 seconds. Robots that are exactly in the middle (horizontally or vertically) don't count as being in any quadrant, so the only relevant robots are:
+To determine the safest area, count the **number of robots in each quadrant** after 100 seconds. Robots that are exactly in the middle (horizontally or vertically) don't count as being in any quadrant, so the only relevant robots are:
 
     ..... 2..1.
     ..... .....
@@ -121,13 +120,12 @@ To determine the safest area, count the _number of robots in each quadrant_ afte
     .1... 1....
     
 
-In this example, the quadrants contain `1`, `3`, `4`, and `1` robot. Multiplying these together gives a total _safety factor_ of `_12_`.
+In this example, the quadrants contain `1`, `3`, `4`, and `1` robot. Multiplying these together gives a total **safety factor** of **`12`**.
 
 Predict the motion of the robots in your list within a space which is `101` tiles wide and `103` tiles tall. _What will the safety factor be after exactly 100 seconds have elapsed?_
 
-\--- Part Two ---
------------------
+## Part Two
 
-During the bathroom break, someone notices that these robots seem awfully similar to ones built and used at the North Pole. If they're the same type of robots, they should have a hard-coded Easter egg: very rarely, most of the robots should arrange themselves into _a picture of a Christmas tree_.
+During the bathroom break, someone notices that these robots seem awfully similar to ones built and used at the North Pole. If they're the same type of robots, they should have a hard-coded Easter egg: very rarely, most of the robots should arrange themselves into **a picture of a Christmas tree**.
 
 _What is the fewest number of seconds that must elapse for the robots to display the Easter egg?_

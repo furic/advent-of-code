@@ -1,5 +1,4 @@
-\--- Day 19: Not Enough Minerals ---
-------------------------------------
+# Day 19: Not Enough Minerals
 
 Your scans show that the lava did indeed form obsidian!
 
@@ -7,13 +6,13 @@ The wind has changed direction enough to stop sending lava droplets toward you, 
 
 To collect the obsidian from the bottom of the pond, you'll need waterproof _obsidian-collecting robots_. Fortunately, there is an abundant amount of clay nearby that you can use to make them waterproof.
 
-In order to harvest the clay, you'll need special-purpose _clay-collecting robots_. To make any type of robot, you'll need _ore_, which is also plentiful but in the opposite direction from the clay.
+In order to harvest the clay, you'll need special-purpose _clay-collecting robots_. To make any type of robot, you'll need **ore**, which is also plentiful but in the opposite direction from the clay.
 
 Collecting ore requires _ore-collecting robots_ with big drills. Fortunately, _you have exactly one ore-collecting robot_ in your pack that you can use to kickstart the whole operation.
 
 Each robot can collect 1 of its resource type per minute. It also takes one minute for the robot factory (also conveniently from your pack) to construct any type of robot, although it consumes the necessary resources available when construction begins.
 
-The robot factory has many _blueprints_ (your puzzle input) you can choose from, but once you've configured it with a blueprint, you can't change it. You'll need to work out which blueprint is best.
+The robot factory has many **blueprints** (your puzzle input) you can choose from, but once you've configured it with a blueprint, you can't change it. You'll need to work out which blueprint is best.
 
 For example:
 
@@ -34,7 +33,7 @@ For example:
 
 The elephants are starting to look hungry, so you shouldn't take too long; you need to figure out which blueprint would maximize the number of opened geodes after _24 minutes_ by figuring out which robots to build and when to build them.
 
-Using blueprint 1 in the example above, the largest number of geodes you could open in 24 minutes is `_9_`. One way to achieve that is:
+Using blueprint 1 in the example above, the largest number of geodes you could open in 24 minutes is **`9`**. One way to achieve that is:
 
     == Minute 1 ==
     1 ore-collecting robot collects 1 ore; you now have 1 ore.
@@ -165,20 +164,19 @@ Using blueprint 1 in the example above, the largest number of geodes you could o
     2 geode-cracking robots crack 2 geodes; you now have 9 open geodes.
     
 
-However, by using blueprint 2 in the example above, you could do even better: the largest number of geodes you could open in 24 minutes is `_12_`.
+However, by using blueprint 2 in the example above, you could do even better: the largest number of geodes you could open in 24 minutes is **`12`**.
 
-Determine the _quality level_ of each blueprint by _multiplying that blueprint's ID number_ with the largest number of geodes that can be opened in 24 minutes using that blueprint. In this example, the first blueprint has ID 1 and can open 9 geodes, so its quality level is `_9_`. The second blueprint has ID 2 and can open 12 geodes, so its quality level is `_24_`. Finally, if you _add up the quality levels_ of all of the blueprints in the list, you get `_33_`.
+Determine the **quality level** of each blueprint by _multiplying that blueprint's ID number_ with the largest number of geodes that can be opened in 24 minutes using that blueprint. In this example, the first blueprint has ID 1 and can open 9 geodes, so its quality level is **`9`**. The second blueprint has ID 2 and can open 12 geodes, so its quality level is **`24`**. Finally, if you **add up the quality levels** of all of the blueprints in the list, you get **`33`**.
 
 Determine the quality level of each blueprint using the largest number of geodes it could produce in 24 minutes. _What do you get if you add up the quality level of all of the blueprints in your list?_
 
-\--- Part Two ---
------------------
+## Part Two
 
 While you were choosing the best blueprint, the elephants found some food on their own, so you're not in as much of a hurry; you figure you probably have _32 minutes_ before the wind changes direction again and you'll need to get out of range of the erupting volcano.
 
-Unfortunately, one of the elephants _ate most of your blueprint list_! Now, only the first three blueprints in your list are intact.
+Unfortunately, one of the elephants **ate most of your blueprint list**! Now, only the first three blueprints in your list are intact.
 
-In 32 minutes, the largest number of geodes blueprint 1 (from the example above) can open is `_56_`. One way to achieve that is:
+In 32 minutes, the largest number of geodes blueprint 1 (from the example above) can open is **`56`**. One way to achieve that is:
 
     == Minute 1 ==
     1 ore-collecting robot collects 1 ore; you now have 1 ore.
@@ -376,8 +374,8 @@ In 32 minutes, the largest number of geodes blueprint 1 (from the example above)
     9 geode-cracking robots crack 9 geodes; you now have 56 open geodes.
     
 
-However, blueprint 2 from the example above is still better; using it, the largest number of geodes you could open in 32 minutes is `_62_`.
+However, blueprint 2 from the example above is still better; using it, the largest number of geodes you could open in 32 minutes is **`62`**.
 
-You _no longer have enough blueprints to worry about quality levels_. Instead, for each of the first three blueprints, determine the largest number of geodes you could open; then, multiply these three values together.
+You **no longer have enough blueprints to worry about quality levels**. Instead, for each of the first three blueprints, determine the largest number of geodes you could open; then, multiply these three values together.
 
 Don't worry about quality levels; instead, just determine the largest number of geodes you could open using each of the first three blueprints. _What do you get if you multiply these numbers together?_

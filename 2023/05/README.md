@@ -1,15 +1,14 @@
-\--- Day 5: If You Give A Seed A Fertilizer ---
------------------------------------------------
+# Day 5: If You Give A Seed A Fertilizer
 
 You take the boat and find the gardener right where you were told he would be: managing a giant "garden" that looks more to you like a farm.
 
-"A water source? Island Island _is_ the water source!" You point out that Snow Island isn't receiving any water.
+"A water source? Island Island **is** the water source!" You point out that Snow Island isn't receiving any water.
 
-"Oh, we had to stop the water because we _ran out of sand_ to [filter](https://en.wikipedia.org/wiki/Sand_filter) it with! Can't make snow with dirty water. Don't worry, I'm sure we'll get more sand soon; we only turned off the water a few days... weeks... oh no." His face sinks into a look of horrified realization.
+"Oh, we had to stop the water because we **ran out of sand** to [filter](https://en.wikipedia.org/wiki/Sand_filter) it with! Can't make snow with dirty water. Don't worry, I'm sure we'll get more sand soon; we only turned off the water a few days... weeks... oh no." His face sinks into a look of horrified realization.
 
 "I've been so busy making sure everyone here has food that I completely forgot to check why we stopped getting more sand! There's a ferry leaving soon that is headed over in that direction - it's much faster than your boat. Could you please go check it out?"
 
-You barely have time to agree to this request when he brings up another. "While you wait for the ferry, maybe you can help us with our _food production problem_. The latest Island Island [Almanac](https://en.wikipedia.org/wiki/Almanac) just arrived and we're having trouble making sense of it."
+You barely have time to agree to this request when he brings up another. "While you wait for the ferry, maybe you can help us with our **food production problem**. The latest Island Island [Almanac](https://en.wikipedia.org/wiki/Almanac) just arrived and we're having trouble making sense of it."
 
 The almanac (your puzzle input) lists all of the seeds that need to be planted. It also lists what type of soil to use with each kind of seed, what type of fertilizer to use with each kind of soil, what type of water to use with each kind of fertilizer, and so on. Every type of seed, soil, fertilizer and so on is identified with a number, but numbers are reused by each category - that is, soil `123` and fertilizer `123` aren't necessarily related to each other.
 
@@ -52,9 +51,9 @@ For example:
 
 The almanac starts by listing which seeds need to be planted: seeds `79`, `14`, `55`, and `13`.
 
-The rest of the almanac contains a list of _maps_ which describe how to convert numbers from a _source category_ into numbers in a _destination category_. That is, the section that starts with `seed-to-soil map:` describes how to convert a _seed number_ (the source) to a _soil number_ (the destination). This lets the gardener and his team know which soil to use with which seeds, which water to use with which fertilizer, and so on.
+The rest of the almanac contains a list of **maps** which describe how to convert numbers from a **source category** into numbers in a **destination category**. That is, the section that starts with `seed-to-soil map:` describes how to convert a **seed number** (the source) to a **soil number** (the destination). This lets the gardener and his team know which soil to use with which seeds, which water to use with which fertilizer, and so on.
 
-Rather than list every source number and its corresponding destination number one by one, the maps describe entire _ranges_ of numbers that can be converted. Each line within a map contains three numbers: the _destination range start_, the _source range start_, and the _range length_.
+Rather than list every source number and its corresponding destination number one by one, the maps describe entire **ranges** of numbers that can be converted. Each line within a map contains three numbers: the **destination range start**, the **source range start**, and the **range length**.
 
 Consider again the example `seed-to-soil map`:
 
@@ -62,11 +61,11 @@ Consider again the example `seed-to-soil map`:
     52 50 48
     
 
-The first line has a _destination range start_ of `50`, a _source range start_ of `98`, and a _range length_ of `2`. This line means that the source range starts at `98` and contains two values: `98` and `99`. The destination range is the same length, but it starts at `50`, so its two values are `50` and `51`. With this information, you know that seed number `98` corresponds to soil number `50` and that seed number `99` corresponds to soil number `51`.
+The first line has a **destination range start** of `50`, a **source range start** of `98`, and a **range length** of `2`. This line means that the source range starts at `98` and contains two values: `98` and `99`. The destination range is the same length, but it starts at `50`, so its two values are `50` and `51`. With this information, you know that seed number `98` corresponds to soil number `50` and that seed number `99` corresponds to soil number `51`.
 
 The second line means that the source range starts at `50` and contains `48` values: `50`, `51`, ..., `96`, `97`. This corresponds to a destination range starting at `52` and also containing `48` values: `52`, `53`, ..., `98`, `99`. So, seed number `53` corresponds to soil number `55`.
 
-Any source numbers that _aren't mapped_ correspond to the _same_ destination number. So, seed number `10` corresponds to soil number `10`.
+Any source numbers that _aren't mapped_ correspond to the **same** destination number. So, seed number `10` corresponds to soil number `10`.
 
 So, the entire list of seed numbers and their corresponding soil numbers looks like this:
 
@@ -92,23 +91,22 @@ With this map, you can look up the soil number required for each initial seed nu
 *   Seed number `55` corresponds to soil number `57`.
 *   Seed number `13` corresponds to soil number `13`.
 
-The gardener and his team want to get started as soon as possible, so they'd like to know the closest location that needs a seed. Using these maps, find _the lowest location number that corresponds to any of the initial seeds_. To do this, you'll need to convert each seed number through other categories until you can find its corresponding _location number_. In this example, the corresponding types are:
+The gardener and his team want to get started as soon as possible, so they'd like to know the closest location that needs a seed. Using these maps, find **the lowest location number that corresponds to any of the initial seeds**. To do this, you'll need to convert each seed number through other categories until you can find its corresponding **location number**. In this example, the corresponding types are:
 
-*   Seed `79`, soil `81`, fertilizer `81`, water `81`, light `74`, temperature `78`, humidity `78`, _location `82`_.
-*   Seed `14`, soil `14`, fertilizer `53`, water `49`, light `42`, temperature `42`, humidity `43`, _location `43`_.
-*   Seed `55`, soil `57`, fertilizer `57`, water `53`, light `46`, temperature `82`, humidity `82`, _location `86`_.
-*   Seed `13`, soil `13`, fertilizer `52`, water `41`, light `34`, temperature `34`, humidity `35`, _location `35`_.
+*   Seed `79`, soil `81`, fertilizer `81`, water `81`, light `74`, temperature `78`, humidity `78`, _location `82`.
+*   Seed `14`, soil `14`, fertilizer `53`, water `49`, light `42`, temperature `42`, humidity `43`, _location `43`.
+*   Seed `55`, soil `57`, fertilizer `57`, water `53`, light `46`, temperature `82`, humidity `82`, _location `86`.
+*   Seed `13`, soil `13`, fertilizer `52`, water `41`, light `34`, temperature `34`, humidity `35`, _location `35`.
 
-So, the lowest location number in this example is `_35_`.
+So, the lowest location number in this example is **`35`**.
 
 _What is the lowest location number that corresponds to any of the initial seed numbers?_
 
-\--- Part Two ---
------------------
+## Part Two
 
-Everyone will starve if you only plant such a small number of seeds. Re-reading the almanac, it looks like the `seeds:` line actually describes _ranges of seed numbers_.
+Everyone will starve if you only plant such a small number of seeds. Re-reading the almanac, it looks like the `seeds:` line actually describes **ranges of seed numbers**.
 
-The values on the initial `seeds:` line come in pairs. Within each pair, the first value is the _start_ of the range and the second value is the _length_ of the range. So, in the first line of the example above:
+The values on the initial `seeds:` line come in pairs. Within each pair, the first value is the **start** of the range and the second value is the **length** of the range. So, in the first line of the example above:
 
     seeds: 79 14 55 13
 
@@ -116,6 +114,6 @@ This line describes two ranges of seed numbers to be planted in the garden. The 
 
 Now, rather than considering four seed numbers, you need to consider a total of _27_ seed numbers.
 
-In the above example, the lowest location number can be obtained from seed number `82`, which corresponds to soil `84`, fertilizer `84`, water `84`, light `77`, temperature `45`, humidity `46`, and _location `46`_. So, the lowest location number is `_46_`.
+In the above example, the lowest location number can be obtained from seed number `82`, which corresponds to soil `84`, fertilizer `84`, water `84`, light `77`, temperature `45`, humidity `46`, and _location `46`. So, the lowest location number is **`46`**.
 
 Consider all of the initial seed numbers listed in the ranges on the first line of the almanac. _What is the lowest location number that corresponds to any of the initial seed numbers?_
