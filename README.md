@@ -1,6 +1,10 @@
 # Advent of Code
 [Advent of Code](https://adventofcode.com) solutions, by [Richard Fu](https://github.com/furic/).
 
+## Requirements
+- **Node.js**: v24+
+- **TypeScript**: Configured for ES2024 target
+
 ## Code Run
 To run TypeScripts in terminal, easiest way is using `ts-node`:
 ```
